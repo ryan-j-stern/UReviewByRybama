@@ -1,11 +1,12 @@
 const express = require('express')
-const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 const path = require('path');
 const cors = require('cors')
 const PORT =  process.env.PORT  || 5000
+
+const userRouter = require('./routes/user')
 
 // Connecting to mongo database
 try{
@@ -23,7 +24,7 @@ app.use(cors())
 // Serve static files from the React app
 app.use(express.static(path.join(__dirname, 'client/build')));
 
-
+app.use('/users', userRouter)
 
 // The "catchall" handler: for any request that doesn't
 // match one above, send back React's index.html file.

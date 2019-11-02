@@ -14,12 +14,12 @@ const userSchema = mongoose.Schema({
     unique: true
   },
   wishList: {
-    type: [Integer],
+    type: [],
     required: true,
     unique: false
   },
   moviesWatched: {
-    type: [Integer],
+    type: [],
     required: true,
     unique: false
   }
