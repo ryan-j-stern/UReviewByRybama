@@ -7,6 +7,7 @@ const cors = require('cors')
 const PORT =  process.env.PORT  || 5000
 
 const userRouter = require('./routes/user')
+const homeRouter = require('./routes/home')
 
 // Connecting to mongo database
 try{
@@ -25,6 +26,7 @@ app.use(cors())
 app.use(express.static(path.join(__dirname, 'client/build')));
 
 app.use('/users', userRouter)
+app.use('/home', homeRouter)
 
 // The "catchall" handler: for any request that doesn't
 // match one above, send back React's index.html file.
