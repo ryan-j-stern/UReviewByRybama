@@ -35,8 +35,42 @@ router.get('/', (req, res) => {
     }
     res.json(topRatedArray)
   });
-  
 })
 
+router.get('/:id', (req, res) => {
+  function getCategoryList(callback) {
+    var xhr = new XMLHttpRequest();
+  
+    xhr.onreadystatechange = (e) => {
+      if (xhr.readyState !== 4) {
+        return;
+      }
+  
+      if (xhr.status === 200) {
+        console.log('SUCCESS', xhr.responseText);
+        callback(JSON.parse(xhr.responseText));
+      } else {
+        console.warn('request_error');
+      }
+    };
+    console.log(req.params.id)
+  
+    xhr.open('GET', "https://api.themoviedb.org/3/movie/"+ req.params.id + "?api_key=" + process.env.APIKEY + "&language=en-US");
+    xhr.send();
+  }
+  
+  getCategoryList(data => {
+    let currentMovie = {}
+   
+    currentMovie = {
+      id: data.id,
+      title: data.title,
+      overview: data.overview,
+      releaseDate: data.release_date
+    }
+    
+    res.json(currentMovie)
+  });
+})
 
 module.exports = router
