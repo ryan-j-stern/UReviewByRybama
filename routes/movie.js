@@ -4,10 +4,12 @@ const mongoose = require('mongoose')
 const request = require('request')
 
 const MovieReview = require('../models/reviewModel')
+const User = require('../models/userModel')
 
 const auth = require('../middleware/authorize')
 
 router.get('/', auth, (req, res) => {
+  // Making the API call to movie db
   request({
     uri: `https://api.themoviedb.org/3/movie/${req.headers.id}?language=en-US&api_key=`,
     qs: {
@@ -19,7 +21,11 @@ router.get('/', auth, (req, res) => {
         message: "Error."
       })
     }
+    
+    // Turn the returned string into JSON
     const finalRes = JSON.parse(body)
+
+    // Getting all review posts associated with the individual movie
     MovieReview.find({movieId: req.headers.id})
     .exec()
     .then(reviews => {
@@ -38,6 +44,7 @@ router.get('/', auth, (req, res) => {
 
 router.post('/', auth, (req, res) => {
   try{
+    console.log(req.userData)
     const movieReview = new MovieReview({
       _id: new mongoose.Types.ObjectId(),
       text: req.body.text,
@@ -53,6 +60,31 @@ router.post('/', auth, (req, res) => {
       }
     })
   } catch(err) {
+    console.log(err)
+  }
+})
+
+router.put('/add-to-wishlist', auth, (req, res) => {
+  try {
+    let movieWish = {
+      _id: req.headers.id,
+      title: req.headers.title
+    }
+    User.findByIdAndUpdate(req.userData.userId,  { "$push": { "wishList": movieWish } }, {new: true})
+    .exec()
+    .then(user => {
+      console.log(user)
+      res.json(user.wishList)
+    })
+    .catch(err => {
+      res.status(500).json({
+        message: err
+      })
+    })
+  } catch(err) {
+    res.status(500).json({
+      message: err
+    })
     console.log(err)
   }
 })

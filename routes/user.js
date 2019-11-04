@@ -30,8 +30,8 @@ router.post('/signup', function(req, res) {
           _id: new mongoose.Types.ObjectId(),
           username: req.body.username,
           password: encryption,
-          wishList: [],
-          seen: []
+          wishList: new Array(),
+          seen: new Array()
         })
   
         User.create(user, (err, user) => {
@@ -67,7 +67,9 @@ router.post('/login', function(req, res) {
         } else if(same) {
           const token = jwt.sign({
             userId: user.id,
-            username: user.username
+            username: user.username,
+            wishList: user.wishList,
+            watchedList: user.watchedList
           },
           'movietimedbpw',
           {
@@ -78,6 +80,7 @@ router.post('/login', function(req, res) {
             message: 'Auth successul.',
             token: token
           })
+          console.log(user)
         } else {
           res.status(401).json({
             message: 'Auth failed.'
