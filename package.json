@@ -4,6 +4,7 @@
   "description": "UReview",
   "main": "index.js",
   "scripts": {
+    "start": "nodemon start",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -25,6 +26,7 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.7.7",
     "path": "^0.12.7",
+    "request": "^2.88.0",
     "xmlhttprequest": "^1.8.0"
   }
 }

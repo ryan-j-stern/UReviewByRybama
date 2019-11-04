@@ -1,76 +1,18 @@
 const express = require('express')
 const router = express()
-var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
+const mongoose = require('mongoose')
 
-router.get('/', (req, res) => {
-  function getCategoryList(callback) {
-    var xhr = new XMLHttpRequest();
-  
-    xhr.onreadystatechange = (e) => {
-      if (xhr.readyState !== 4) {
-        return;
-      }
-  
-      if (xhr.status === 200) {
-        console.log('SUCCESS', xhr.responseText);
-        callback(JSON.parse(xhr.responseText));
-      } else {
-        console.warn('request_error');
-      }
-    };
-  
-    xhr.open('GET', "https://api.themoviedb.org/3/movie/top_rated?page=1&language=en-US&api_key=" + process.env.APIKEY);
-    xhr.send();
-  }
-  
-  getCategoryList(data => {
-    let topRatedArray = []
-    for(let i = 0; i < data.results.length; i++) {
-      topRatedArray[i] = {
-        id: data.results[i].id,
-        title: data.results[i].title,
-        overview: data.results[i].overview,
-        releaseDate: data.results[i].release_date
-      }
-    }
-    res.json(topRatedArray)
-  });
-})
+const auth = require('../middleware/authorize')
+const request = require('request')
 
-router.get('/:id', (req, res) => {
-  function getCategoryList(callback) {
-    var xhr = new XMLHttpRequest();
-  
-    xhr.onreadystatechange = (e) => {
-      if (xhr.readyState !== 4) {
-        return;
-      }
-  
-      if (xhr.status === 200) {
-        console.log('SUCCESS', xhr.responseText);
-        callback(JSON.parse(xhr.responseText));
-      } else {
-        console.warn('request_error');
-      }
-    };
-    console.log(req.params.id)
-  
-    xhr.open('GET', "https://api.themoviedb.org/3/movie/"+ req.params.id + "?api_key=" + process.env.APIKEY + "&language=en-US");
-    xhr.send();
-  }
-  
-  getCategoryList(data => {
-    let currentMovie = {}
-   
-    currentMovie = {
-      id: data.id,
-      title: data.title,
-      overview: data.overview,
-      releaseDate: data.release_date
+router.get('/', auth, function(req, res) {
+  request({
+    uri: `https://api.themoviedb.org/3/movie/top_rated?language=en-US&api_key=`,
+    qs: {
+      api_key: process.env.APIKEY
     }
-    
-    res.json(currentMovie)
-  });
-})
+  }).pipe(res)
+});
+
 
 module.exports = router
