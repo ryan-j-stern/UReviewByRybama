@@ -1,25 +1,40 @@
 const express = require('express')
 const router = express()
 const mongoose = require('mongoose')
+const request = require('request')
 
 const MovieReview = require('../models/reviewModel')
 
 const auth = require('../middleware/authorize')
-const request = require('request')
 
-// router.post('/?id', auth, (req, res) => {
-//   // Create new post and save to db
-//   
-// })
-
-router.get('/', auth, function(req, res) {
+router.get('/', auth, (req, res) => {
   request({
     uri: `https://api.themoviedb.org/3/movie/${req.headers.id}?language=en-US&api_key=`,
     qs: {
       api_key: process.env.APIKEY
     }
-  }).pipe(res)
-});
+  }, (err, response, body) => {
+    if(err) {
+      res.status(500).json({
+        message: "Error."
+      })
+    }
+    const finalRes = JSON.parse(body)
+    MovieReview.find({movieId: req.headers.id})
+    .exec()
+    .then(reviews => {
+      res.status(200).json({
+        body: finalRes,
+        posts: reviews
+      })
+    })
+    .catch(err => {
+     res.status(500).json({
+       message: "Could not retrieve information."
+     })
+    })
+  })
+})
 
 router.post('/', auth, (req, res) => {
   try{
