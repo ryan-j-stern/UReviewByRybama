@@ -1,11 +1,13 @@
 const express = require('express')
 const router = express()
-
 const mongoose = require('mongoose')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 
+const auth = require('../middleware/authorize')
+
 const User = require('../models/userModel')
+const MovieReview = require('../models/reviewModel')
 
 // Retrieves all users stored in the database
 router.get('/', function(req, res) {
@@ -97,6 +99,35 @@ router.post('/login', function(req, res) {
     console.log('nah')
   }
   
+})
+
+router.get('/profile', auth, (req, res) => {
+  User.findById({_id: req.userData.userId})
+  .exec()
+  .then(user => {
+    MovieReview.find({owner: req.userData.userId})
+    .exec()
+    .then(reviews => {
+      res.status(200).json({
+        username: user.username,
+        wishList: user.wishList,
+        watchedList: user.moviesWatched,
+        reviews: reviews
+      })
+    })
+    .catch(err => {
+      console.log(err)
+      res.status(500).json({
+        message: err
+      })
+    })
+  })
+  .catch(err => {
+    console.log(err)
+    res.status(500).json({
+      message: err
+    })
+  })
 })
 
 // Deletes user based off id provided in url
