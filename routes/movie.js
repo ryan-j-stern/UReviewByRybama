@@ -114,4 +114,25 @@ router.put('/add-to-watchlist', auth, (req, res) => {
   }
 })
 
+router.get('/search', auth, (req, res) => {
+  try {
+    console.log(req.headers.query)
+    request({
+      uri: `https://api.themoviedb.org/3/search/movie?api_key=${process.env.APIKEY}&language=en-US&query=${req.headers.query}&page=1&include_adult=false`
+    }, (err, response, body) => {
+      if(err) {
+        console.log(err)
+        res.status(500).json({
+          message: "Error."
+        })
+      }
+      const results = JSON.parse(body)
+      res.json(results)
+    })
+  } catch(err) {
+    console.log(err)
+  }
+  
+})
+
 module.exports = router
