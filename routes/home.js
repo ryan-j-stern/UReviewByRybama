@@ -9,7 +9,7 @@ router.get('/', auth, (req, res) => {
   request({
     uri: `https://api.themoviedb.org/3/movie/top_rated?language=en-US&api_key=`,
     qs: {
-      api_key: process.env.APIKEY
+      api_key: '311126e773585af516e7a99d4f8e9565'
     }
   }).pipe(res)
 });
