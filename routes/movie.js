@@ -27,7 +27,7 @@ router.get('/:id', auth, (req, res) => {
     const finalRes = JSON.parse(body)
 
     // Getting all review posts associated with the individual movie
-    MovieReview.find({movieId: req.headers.id})
+    MovieReview.find({movieId: req.params.id})
     .exec()
     .then(reviews => {
       res.status(200).json({
