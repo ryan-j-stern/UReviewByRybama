@@ -8,10 +8,11 @@ const User = require('../models/userModel')
 
 const auth = require('../middleware/authorize')
 
-router.get('/', auth, (req, res) => {
+router.get('/:id', auth, (req, res) => {
+  console.log(req.params.id)
   // Making the API call to movie db
   request({
-    uri: `https://api.themoviedb.org/3/movie/${req.headers.id}?language=en-US&api_key=`,
+    uri: `https://api.themoviedb.org/3/movie/${req.params.id}?language=en-US&api_key=`,
     qs: {
       api_key: process.env.APIKEY
     }
@@ -132,7 +133,7 @@ router.get('/search', auth, (req, res) => {
   } catch(err) {
     console.log(err)
   }
-  
 })
+
 
 module.exports = router
