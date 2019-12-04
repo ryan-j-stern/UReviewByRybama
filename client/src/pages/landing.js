@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Button from 'react-bootstrap/Button'
+import { Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
 import { Link }from 'react-router-dom'
 import logo from './images/UReviewLogo.png'; // Tell Webpack this JS file uses this image
 import banner from './images/MovieBanner.jpg';
@@ -15,7 +16,21 @@ console.log(signuplogo);
 class Landing extends Component {
   render() {
     return(
+
       <div style={styling.mainDiv} >
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="#">WebSiteName</a>
+          </div>
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#">Page 1</a></li>
+            <li><a href="#">Page 2</a></li>
+            <li><a href="#">Page 3</a></li>
+          </ul>
+        </div>
+      </nav>
 
       <div> <img src={logo} width = "800"/> </div>
       <div> <img src={banner} width = "1000"/> </div>

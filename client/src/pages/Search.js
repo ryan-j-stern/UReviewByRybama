@@ -1,6 +1,8 @@
 import React from 'react';
+import logo from './images/UReviewLogo.png';
 
 import './Search.css';
+console.log(logo);
 
 const Search = (props) => {
     let resultList = null
@@ -19,10 +21,12 @@ const Search = (props) => {
     }
 
     return (
-        <div className="search">
+      <div><img src={logo} width = "400"/> <br></br> SEARCH:
+      <div className="search">
             <input type="search" name="movie-search" value={props.defaultTitle} onChange={props.search} />
             {resultList}
         </div>
+      </div>
     );
 };
 
