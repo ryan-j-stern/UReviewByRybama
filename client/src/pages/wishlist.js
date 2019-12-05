@@ -14,7 +14,7 @@ class Wishlist extends Component {
       result: [ {} ],
       jwt: this.props.location.state.jwt
     }
-    this.postAndFetchData('add-to-wishlist')
+    this.postAndFetchData('wishlist')
   }
 
   postAndFetchData = (path) => {
@@ -51,12 +51,13 @@ class Wishlist extends Component {
     return(
       <div >
         <div style={styling.outerDiv}>
+          <img src={logo} width = "400"/>
           <div>
             <ul>{this.mapMovies()}</ul>
             <Link to={{
               pathname: '/users/dashboard',
               state: { jwt: this.state.jwt }
-            }}> </Link>
+            }}> DASHBOARD </Link>
           </div>
         </div>
       </div>

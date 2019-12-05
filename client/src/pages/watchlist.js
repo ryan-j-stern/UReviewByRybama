@@ -7,55 +7,13 @@ import logo from './images/UReviewLogo.png';
 console.log(logo);
 
 class Watchlist extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      result: [ {} ],
-      jwt: this.props.location.state.jwt
-    }
-    this.postAndFetchData('add-to-watchlist')
-  }
-
-  postAndFetchData = (path) => {
-    fetch('http:/' + path , {
-      headers: {
-        'Content-type': 'application/json',
-        'Authorization': 'Bearer ' + this.state.jwt
-      }
-    })
-    .then((response) => {
-      return response.text()
-    })
-    .then((data) => {
-      let parsed = JSON.parse(data)
-      this.setState({result: parsed.movies})
-    })
-    .catch(() => {
-      console.log('didnt post')
-    })
-  }
-
-  mapMovies = () => {
-    return this.state.result.map((movie) =>
-      <div>
-        <li>{movie.name}</li>
-        <br>
-        </br>
-        <li></li>
-      </div>
-    )
-  }
-
   render() {
     return(
       <div >
         <div style={styling.outerDiv}>
+          <img src={logo} width = "400"/>
           <div>
-            <ul>{this.mapMovies()}</ul>
-            <Link to={{
-              pathname: '/users/dashboard',
-              state: { jwt: this.state.jwt }
-            }}> </Link>
+            
           </div>
         </div>
       </div>
