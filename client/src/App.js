@@ -5,7 +5,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import './App.css';
 import Landing from './pages/landing.js'
 import SignUp from './pages/users.signup'
-import Login from './pages/login'
+import Login from './pages/users.login'
 import Search from './pages/Search.js'
 
 
@@ -17,7 +17,7 @@ function App() {
         <Switch>
           <Route exact path='/' component={Landing} />
           <Route exact path='/users/signup' component={SignUp} />
-          <Route exact path='/login' component={Login} />
+          <Route exact path='/users/login' component={Login} />
 
         </Switch>
       </Router>

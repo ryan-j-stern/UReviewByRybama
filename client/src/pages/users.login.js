@@ -82,7 +82,7 @@ class Login extends Component {
 
 // Calls the postAndFetch function when submit button is clicked
   onSubmit = (e) => {
-    this.postAndFetchData('/login')
+    this.postAndFetchData('/users/login')
   }
 
 // Prepares page to be redirected
