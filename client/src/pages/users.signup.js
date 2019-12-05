@@ -51,7 +51,7 @@ class SignUp extends Component {
 // user clicks submit button
   onSubmit = (e) => {
     try{
-      fetch('http://157.230.185.190' + '/users/signup' , {
+      fetch('http://localhost:3000' + '/signup' , {
       method: "POST",
       headers: {
         'Content-type': 'application/json',
@@ -91,7 +91,7 @@ class SignUp extends Component {
  // Displays format of page and styling
   render() {
     return(
-      <div >
+      <div style={styling.bigDiv}>
        <img src={signuplit} width = "600"/>
         <div style={styling.outerDiv}>
         <Form style={styling.formDiv}>
@@ -121,11 +121,16 @@ class SignUp extends Component {
 const styling = {
   formDiv: {
     width: '50%',
+    background: '#0f0524'
+  },
+  bigDiv: {
+    background: '#0f0524'
   },
   outerDiv: {
     display: 'flex',
     justifyContent: 'center',
-    margin: '8%'
+    margin: '8%',
+    background: '#0f0524'
   }
 }
 

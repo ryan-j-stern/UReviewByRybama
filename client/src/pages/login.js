@@ -82,7 +82,7 @@ class Login extends Component {
 
 // Calls the postAndFetch function when submit button is clicked
   onSubmit = (e) => {
-    this.postAndFetchData('users/login')
+    this.postAndFetchData('/login')
   }
 
 // Prepares page to be redirected
@@ -96,7 +96,7 @@ class Login extends Component {
   renderRedirect = () => {
     if (this.state.redirect) {
       return <Redirect to={{
-        pathname: '/users/dashboard',
+        pathname: '/search',
         state: { jwt: this.state.jwt }
       }}/>
     }
@@ -145,11 +145,13 @@ class Login extends Component {
 const styling = {
   formDiv: {
     width: '50%',
+    background: '#282c34'
   },
   outerDiv: {
     display: 'flex',
     justifyContent: 'center',
-    margin: '8%'
+    margin: '8%',
+    background: '#282c34'
   }
 }
 

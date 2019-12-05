@@ -21,13 +21,44 @@ const Search = (props) => {
     }
 
     return (
-      <div><img src={logo} width = "400"/> <br></br> SEARCH:
-      <div className="search">
-            <input type="search" name="movie-search" value={props.defaultTitle} onChange={props.search} />
-            {resultList}
-        </div>
+      <div style={styling.mainDiv} >
+        <img src={logo} width = "400"/>
+        <br></br> SEARCH:
+        <div className="search">
+              <input type="search" name="movie-search" value={props.defaultTitle} onChange={props.search} />
+              {resultList}
+          </div>
+
+          <div class="row">
+            <div class="col-sm-4"> HELLOOOOOOO </div>
+            <div class="col-sm-4">.col-sm-4</div>
+            <div class="col-sm-4">.col-sm-4</div>
+          </div>
+        
       </div>
     );
 };
+
+
+const styling = {
+  mainDiv: {
+    background: '#0f0524',
+    textAlign: 'center'
+  },
+  buttons: {
+
+
+  },
+  signup: {
+
+    marginRight: '30%'
+  },
+  buttonDiv: {
+
+
+    justifyContent: 'center',
+
+  }
+}
 
 export default Search;
