@@ -22,7 +22,7 @@ router.get('/:id', auth, (req, res) => {
         message: "Error."
       })
     }
-    
+
     // Turn the returned string into JSON
     const finalRes = JSON.parse(body)
 
@@ -43,13 +43,13 @@ router.get('/:id', auth, (req, res) => {
   })
 })
 
-router.post('/', auth, (req, res) => {
+router.post('/:id', auth, (req, res) => {
   try{
     console.log(req.userData)
     const movieReview = new MovieReview({
       _id: new mongoose.Types.ObjectId(),
       text: req.body.text,
-      movieId: req.headers.id,
+      movieId: req.params.id,
       owner: req.userData.userId
     })
 
