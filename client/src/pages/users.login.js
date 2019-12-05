@@ -45,7 +45,7 @@ class Login extends Component {
 // Send the state to the api, receives data back and displays that data, JSON WEB TOKEN is given back to us to allow
 // user to access needed routes
   postAndFetchData = (path) => {
-    fetch('http:/' + path , {
+    fetch('http://localhost:3000' + path , {
       method: "POST",
       headers: {
         'Content-type': 'application/json'
@@ -96,7 +96,7 @@ class Login extends Component {
   renderRedirect = () => {
     if (this.state.redirect) {
       return <Redirect to={{
-        pathname: '/search',
+        pathname: '/dashboard',
         state: { jwt: this.state.jwt }
       }}/>
     }

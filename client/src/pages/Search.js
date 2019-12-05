@@ -1,7 +1,8 @@
 import React from 'react';
 import logo from './images/UReviewLogo.png';
-
 import './Search.css';
+
+
 console.log(logo);
 
 const Search = (props) => {
@@ -30,11 +31,16 @@ const Search = (props) => {
           </div>
 
           <div class="row">
-            <div class="col-sm-4"> HELLOOOOOOO </div>
-            <div class="col-sm-4">.col-sm-4</div>
-            <div class="col-sm-4">.col-sm-4</div>
+            <div class="col-sm-4">
+            <br></br> column hi
+            <p><a href="/watchlist">WATCHLIST</a></p>
+            </div>
+            <div class="col-sm-4">
+            <br></br> column 2 </div>
+            <div class="col-sm-4">
+            <br></br> column 3 </div>
           </div>
-        
+
       </div>
     );
 };
@@ -43,19 +49,14 @@ const Search = (props) => {
 const styling = {
   mainDiv: {
     background: '#0f0524',
-    textAlign: 'center'
-  },
-  buttons: {
-
-
+    textAlign: 'center',
+    color: 'white'
   },
   signup: {
-
+    color: 'white',
     marginRight: '30%'
   },
   buttonDiv: {
-
-
     justifyContent: 'center',
 
   }
