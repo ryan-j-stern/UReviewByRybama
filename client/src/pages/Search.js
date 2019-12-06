@@ -3,6 +3,7 @@ import logo from './images/UReviewLogo.png';
 import './Search.css';
 import { Button } from 'react-bootstrap/'
 import { Redirect } from 'react-router-dom'
+import NavBar from '../components/navbar'
 
 console.log(logo);
 
@@ -113,7 +114,7 @@ class Search extends Component{
               result: res
             })
           }
-          console.log(this.state.result)
+          // console.log(this.state.result)
         })
         .then(() => {this.setRedirect()})
         .catch((err) => {
@@ -141,26 +142,7 @@ class Search extends Component{
     
     return (
       <div style={styling.mainDiv} >
-
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">UReview</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-        <li class="nav-item active">
-          <a class="nav-link" href="#">Dashboard <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Profile</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Logout</a>
-        </li>
-        </ul>
-        </div>
-      </nav>
+      <NavBar jwt={this.state.jwt}/>
 
         <img src= {logo} width = "400"/>
         <br></br> SEARCH:

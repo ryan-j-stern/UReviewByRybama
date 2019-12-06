@@ -8,6 +8,7 @@ import SignUp from './pages/users.signup'
 import Login from './pages/users.login'
 import Search from './pages/Search.js'
 import MovieId from './pages/movieId'
+import Profile from './pages/profile'
 
 
 // Maps out every URL that has a component and links that URL with corresponding component
@@ -21,7 +22,7 @@ function App() {
           <Route exact path='/users/login' component={Login} />
           <Route exact path='/dashboard' component={Search} />
           <Route path='/movie/123' component={MovieId} />
-
+          <Route path='/users/profile' component={Profile} />
         </Switch>
       </Router>
     </div>
