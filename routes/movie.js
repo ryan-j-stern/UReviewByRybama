@@ -28,11 +28,11 @@ router.post('/search', auth, (req, res) => {
   }
 })
 
-router.get('/:id', auth, (req, res) => {
-  console.log(req.params.id)
+router.get('/clicked', auth, (req, res) => {
+  console.log(req.headers.id)
   // Making the API call to movie db
   request({
-    uri: `https://api.themoviedb.org/3/movie/${req.params.id}?language=en-US&api_key=`,
+    uri: `https://api.themoviedb.org/3/movie/${req.headers.id}?language=en-US&api_key=`,
     qs: {
       api_key: process.env.APIKEY
     }
@@ -47,7 +47,7 @@ router.get('/:id', auth, (req, res) => {
     const finalRes = JSON.parse(body)
 
     // Getting all review posts associated with the individual movie
-    MovieReview.find({movieId: req.params.id})
+    MovieReview.find({movieId: req.headers.id})
     .exec()
     .then(reviews => {
       res.status(200).json({
@@ -63,13 +63,13 @@ router.get('/:id', auth, (req, res) => {
   })
 })
 
-router.post('/:id', auth, (req, res) => {
+router.post('/clicked', auth, (req, res) => {
   try{
     console.log(req.userData)
     const movieReview = new MovieReview({
       _id: new mongoose.Types.ObjectId(),
       text: req.body.text,
-      movieId: req.params.id,
+      movieId: req.headers.id,
       owner: req.userData.userId
     })
 

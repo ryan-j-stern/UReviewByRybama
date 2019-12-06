@@ -21,13 +21,13 @@ class NavBar extends Component{
             state: {
               jwt: this.state.jwt
             }
-          }}>Dashboard</Link>
+          }}>Dashboard</Link><br></br>
         <Link to={{
             pathname: '/users/profile',
             state: {
               jwt: this.state.jwt
             }
-          }}>Profile</Link>
+          }}>Profile</Link><br></br>
         <Link to={{
             pathname: '/'
           }}>Logout</Link>
