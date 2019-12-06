@@ -7,6 +7,11 @@ console.log(logo);
 
 const Search = (props) => {
     let resultList = null
+    let state = {
+      jwt: props.location.state.jwt
+    }
+
+    console.log('PROPS ' + state.jwt)
 
     if (props.searching && (props.defaultTitle !== '')) {
         resultList = (
