@@ -8,7 +8,7 @@ const User = require('../models/userModel')
 
 const auth = require('../middleware/authorize')
 
-router.get('/search', auth, (req, res) => {
+router.post('/search', auth, (req, res) => {
   try {
     console.log('QUERY '+req.body.query)
     request({
@@ -21,7 +21,7 @@ router.get('/search', auth, (req, res) => {
         })
       }
       const results = JSON.parse(body)
-      res.json(results)
+      res.json({results: results})
     })
   } catch(err) {
     console.log(err)
