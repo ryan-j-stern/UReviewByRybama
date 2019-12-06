@@ -11,6 +11,10 @@
     margin-top: 10px;
 }
 
+.card-body {
+  color: black;
+}
+
 .search input {
     height: 26px;
     width: 100%;

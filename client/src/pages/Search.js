@@ -44,22 +44,168 @@ const Search = (props) => {
         </div>
       </nav>
 
-        <img src={logo} width = "400"/>
+        <img src= {logo} width = "400"/>
         <br></br> SEARCH:
         <div className="search">
               <input type="search" name="movie-search" value={props.defaultTitle} onChange={props.search} />
               {resultList}
-          </div>
+        </div>
 
           <div class="row">
             <div class="col-sm-4">
-            <br></br> column hi
-            <p><a href="/watchlist">WATCHLIST</a></p>
+            <br></br>
+            <div class="card">
+              <div class="card-body">
+                This is some text within a card body.
+              </div>
+            </div>
+
+            <br></br>
+            <div class="card">
+              <div class="card-body">
+                This is some text within a card body.
+              </div>
+            </div>
+
+            <br></br>
+            <div class="card">
+              <div class="card-body">
+                This is some text within a card body.
+              </div>
+            </div>
+
+            <br></br>
+            <div class="card">
+              <div class="card-body">
+                This is some text within a card body.
+              </div>
+            </div>
+
+            <br></br>
+            <div class="card">
+              <div class="card-body">
+                This is some text within a card body.
+              </div>
+            </div>
+
+            <br></br>
+            <div class="card">
+              <div class="card-body">
+                This is some text within a card body.
+              </div>
+            </div>
+
+            <br></br>
+            <div class="card">
+              <div class="card-body">
+                This is some text within a card body.
+              </div>
+            </div>
+
             </div>
             <div class="col-sm-4">
-            <br></br> column 2 </div>
+            <br></br>
+
+            <div class="card">
+              <div class="card-body">
+                This is some text within a card body.
+              </div>
+            </div>
+
+            <br></br>
+            <div class="card">
+              <div class="card-body">
+                This is some text within a card body.
+              </div>
+            </div>
+
+            <br></br>
+            <div class="card">
+              <div class="card-body">
+                This is some text within a card body.
+              </div>
+            </div>
+
+            <br></br>
+            <div class="card">
+              <div class="card-body">
+                This is some text within a card body.
+              </div>
+            </div>
+
+            <br></br>
+            <div class="card">
+              <div class="card-body">
+                This is some text within a card body.
+              </div>
+            </div>
+
+            <br></br>
+            <div class="card">
+              <div class="card-body">
+                This is some text within a card body.
+              </div>
+            </div>
+
+            <br></br>
+            <div class="card">
+              <div class="card-body">
+                This is some text within a card body.
+              </div>
+            </div>
+
+            </div>
             <div class="col-sm-4">
-            <br></br> column 3 </div>
+            <br></br>
+            <div class="card">
+              <div class="card-body">
+                This is some text within a card body.
+              </div>
+            </div>
+
+            <br></br>
+            <div class="card">
+              <div class="card-body">
+                This is some text within a card body.
+              </div>
+            </div>
+
+            <br></br>
+            <div class="card">
+              <div class="card-body">
+                This is some text within a card body.
+              </div>
+            </div>
+
+            <br></br>
+            <div class="card">
+              <div class="card-body">
+                This is some text within a card body.
+              </div>
+            </div>
+
+            <br></br>
+            <div class="card">
+              <div class="card-body">
+                This is some text within a card body.
+              </div>
+            </div>
+
+            <br></br>
+            <div class="card">
+              <div class="card-body">
+                This is some text within a card body.
+              </div>
+            </div>
+
+            <br></br>
+            <div class="card">
+              <div class="card-body">
+                This is some text within a card body.
+              </div>
+            </div>
+
+            </div>
           </div>
 
       </div>
