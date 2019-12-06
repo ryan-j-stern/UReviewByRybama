@@ -23,6 +23,17 @@ class MovieId extends Component {
     // }
   } 
   render() {
+    // mapContacts = () => {
+    //   return this.state.result.map((contact) =>
+    //     <div>
+    //       <li>Full Name: {contact.name}</li>
+    //       <li>Phone Number: {contact.number}</li>
+    //       <li>Email Address: {contact.email}</li><br>
+    //       </br>
+    //       <li></li>
+    //     </div>
+    //   )
+    // }
     return (
       <div style={styling.mainDiv} >
   
@@ -64,6 +75,20 @@ class MovieId extends Component {
             <br></br> column 3 </div>
           </div> */}
           <div>
+            <img src={'http://image.tmdb.org/t/p/w185//9O7gLzmreU0nGkIB6K3BsJbzvNv.jpg'} width = "200" height='250' style={styling.img}/>
+          </div>
+          <div>
+            <h2 >Shawshank Redemption</h2><br></br>
+            <p>Overview: </p>
+            <p>Release Date: </p>
+          </div>
+          <div>
+            {/* <ul>{this.mapContacts()}</ul> */}
+          </div>
+          <div>
+            <textarea placeholder="Leave a review." cols="80" rows="3" style={{resize: 'none'}}></textarea>
+          </div>
+          <div>
           <Button variant="danger" size="lg" block>
             Add to WishList
           </Button>
@@ -91,6 +116,10 @@ const styling = {
   buttonDiv: {
     justifyContent: 'center',
 
+  },
+  img: {
+    border: '1px white solid',
+    float: 'left'
   }
 }
 
