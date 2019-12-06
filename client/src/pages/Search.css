@@ -27,6 +27,13 @@
     border-color: #66b1ee;
 }
 
+.card-body {
+  background-color: #0f0524;
+  outline: none;
+  border-color: #0f0524;
+  color: white;
+  align-items: center;
+}
 
 .search .results {
 

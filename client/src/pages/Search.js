@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
-import logo from './images/UReviewLogo.png';
 import './Search.css';
 import { Button } from 'react-bootstrap/'
 import { Redirect } from 'react-router-dom'
 import NavBar from '../components/navbar'
+import { Link } from 'react-router-dom'
 
-console.log(logo);
-
-class Search extends Component{
+class Search extends React.Component{
   constructor(props) {
     super(props)
     // let resultList = null
@@ -21,7 +19,7 @@ class Search extends Component{
     }
     this.getPopularMovies('/home')
   }
-    
+
      handleQueryChange = (e) => {
       this.setState({
         query: e.target.value
@@ -124,9 +122,9 @@ class Search extends Component{
 
     // Calls the postAndFetch function when submit button is clicked
      onSubmit = (e) => {
-      this.postAndFetchData('/movie/search', 1)
+      this.postAndFetchData('/movie/search')
     }
-   
+
     // Sets variable to false when ready to leave page
      componentWillUnmount = () => {
       this.mounted = false
@@ -137,178 +135,59 @@ class Search extends Component{
       this.mounted = true
     }
 
+
+      renderCards = () => {
+            console.log("POPULAR MOVIES", this.state.popularMovies)
+            if(this.state.popularMovies){
+              const poster = this.state.popularMovies.map(t =>  {
+                return(
+                  <div class="card">
+                      <div class="card-body">
+                      <img src={`https://image.tmdb.org/t/p/w500${t.poster_path}`} width = "300" style={styling.img}/>
+
+                        <Link to={{
+                           pathname: '/movie/clicked',
+                           state: {
+                           jwt: this.state.jwt,
+                           id: t.id,
+                          }
+                        }}><h2 className="card-title">{t.title}</h2> </Link>
+
+                      </div>
+                  </div>
+              )
+            })
+            return(
+              <div className = "row">
+              {poster}
+              </div>
+            )
+          }
+        }
+
+
+
+
     render(){
       // Sets query in state to be whatever the user is typing
-    
+
     return (
       <div style={styling.mainDiv} >
       <NavBar jwt={this.state.jwt}/>
 
-        <img src= {logo} width = "400"/>
+        <img src='https://i.imgur.com/5AFVMLg.png' width = "400"/>
         <br></br> SEARCH:
         <div className="search">
         {this.renderRedirect()}
               <input type="input" name="query" value={this.state.query} onChange={this.handleQueryChange} />
-              
               <Button variant="outline-success" onClick={this.onSubmit}>Submit</Button>
         </div>
 
-          <div class="row">
-            <div class="col-sm-4">
-            <br></br>
-            <div class="card">
-              <div class="card-body">
-                This is some text within a card body.
-              </div>
-            </div>
-
-            <br></br>
-            <div class="card">
-              <div class="card-body">
-                This is some text within a card body.
-              </div>
-            </div>
-
-            <br></br>
-            <div class="card">
-              <div class="card-body">
-                This is some text within a card body.
-              </div>
-            </div>
-
-            <br></br>
-            <div class="card">
-              <div class="card-body">
-                This is some text within a card body.
-              </div>
-            </div>
-
-            <br></br>
-            <div class="card">
-              <div class="card-body">
-                This is some text within a card body.
-              </div>
-            </div>
-
-            <br></br>
-            <div class="card">
-              <div class="card-body">
-                This is some text within a card body.
-              </div>
-            </div>
-
-            <br></br>
-            <div class="card">
-              <div class="card-body">
-                This is some text within a card body.
-              </div>
-            </div>
-
-            </div>
-            <div class="col-sm-4">
-            <br></br>
-
-            <div class="card">
-              <div class="card-body">
-                This is some text within a card body.
-              </div>
-            </div>
-
-            <br></br>
-            <div class="card">
-              <div class="card-body">
-                This is some text within a card body.
-              </div>
-            </div>
-
-            <br></br>
-            <div class="card">
-              <div class="card-body">
-                This is some text within a card body.
-              </div>
-            </div>
-
-            <br></br>
-            <div class="card">
-              <div class="card-body">
-                This is some text within a card body.
-              </div>
-            </div>
-
-            <br></br>
-            <div class="card">
-              <div class="card-body">
-                This is some text within a card body.
-              </div>
-            </div>
-
-            <br></br>
-            <div class="card">
-              <div class="card-body">
-                This is some text within a card body.
-              </div>
-            </div>
-
-            <br></br>
-            <div class="card">
-              <div class="card-body">
-                This is some text within a card body.
-              </div>
-            </div>
-
-            </div>
-            <div class="col-sm-4">
-            <br></br>
-            <div class="card">
-              <div class="card-body">
-                This is some text within a card body.
-              </div>
-            </div>
-
-            <br></br>
-            <div class="card">
-              <div class="card-body">
-                This is some text within a card body.
-              </div>
-            </div>
-
-            <br></br>
-            <div class="card">
-              <div class="card-body">
-                This is some text within a card body.
-              </div>
-            </div>
-
-            <br></br>
-            <div class="card">
-              <div class="card-body">
-                This is some text within a card body.
-              </div>
-            </div>
-
-            <br></br>
-            <div class="card">
-              <div class="card-body">
-                This is some text within a card body.
-              </div>
-            </div>
-
-            <br></br>
-            <div class="card">
-              <div class="card-body">
-                This is some text within a card body.
-              </div>
-            </div>
-
-            <br></br>
-            <div class="card">
-              <div class="card-body">
-                This is some text within a card body.
-              </div>
-            </div>
-
-            </div>
-          </div>
+        <React.Fragment>
+        <div>
+          {this.renderCards()}
+        </div>
+        </React.Fragment>
 
       </div>
       );
@@ -320,7 +199,9 @@ const styling = {
   mainDiv: {
     background: '#0f0524',
     textAlign: 'center',
-    color: 'white'
+    color: 'white',
+    outline: 'none',
+    justifyContent: 'center',
   },
   signup: {
     color: 'white',
