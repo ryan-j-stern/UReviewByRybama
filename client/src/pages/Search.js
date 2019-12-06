@@ -173,7 +173,7 @@ class Search extends React.Component{
 
     return (
       <div style={styling.mainDiv} >
-      <NavBar jwt={this.state.jwt}/>
+      <NavBar location={{state: {jwt: this.state.jwt}}}/>
 
         <img src='https://i.imgur.com/5AFVMLg.png' width = "400"/>
         <br></br> SEARCH:

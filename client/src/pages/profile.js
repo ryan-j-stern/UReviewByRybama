@@ -11,24 +11,17 @@ class Profile extends Component{
   constructor(props) {
     super(props)
     // let resultList = null
+    console.log(props)
     this.state = {
-      jwt: props.location.jwt,
+      jwt: props.location.state.jwt,
       username: '',
       wishList: [{}],
       watchedList: [{}],
       reviews: [{}],
       redirect: false
     }
-    console.log(this.props.location.jwt)
     this.getUserProfile('/users/profile')
   }
-    
-     handleQueryChange = (e) => {
-      this.setState({
-        query: e.target.value
-      })
-      console.log(this.state.query)
-    }
 
      // Prepares page to be redirected
      setRedirect = () => {
@@ -70,7 +63,7 @@ class Profile extends Component{
           console.log(data)
           let res = JSON.parse(data)
           console.log(res)
-          res = res
+          this.mounted = true
           if(this.mounted == true) {
             this.setState({
               username: res.username,
@@ -78,8 +71,9 @@ class Profile extends Component{
               watchedList: res.watchedList,
               reviews: res.reviews
             })
-            console.log('Username: ' + this.state.username)
+            console.log(this.state.username)
           }
+          console.log(this.state.username)
         })
         .catch((err) => {
           console.log(err)
@@ -91,7 +85,7 @@ class Profile extends Component{
     return (
       <div style={styling.mainDiv} >
 
-      <NavBar />
+      <NavBar location={{state: {jwt: this.state.jwt}}}/>
 
       <div>
         <h1>{`${this.state.username}`}</h1>
