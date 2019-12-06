@@ -15,27 +15,12 @@ class Search extends Component{
       query: '',
       redirect: false,
       result: [{}],
-      errorResult: ''
+      errorResult: '',
+      popularMovies: [{}]
     }
-    // console.log('PROPS ' + state.jwt)
+    this.getPopularMovies('/home')
   }
     
-    // this.handleQueryChange = this.handleQueryChange.bind(this);
-
-    
-
-    // if (props.searching && (props.defaultTitle !== '')) {
-    //     resultList = (
-    //         <ul className="results">
-    //             {props.results.map(item => (
-    //                 <li key={item.imdbID} onClick={() => props.clicked(item)}>
-    //                     <img src={item.Poster} alt="Movie Poster"/>
-    //                     {item.Title}
-    //                 </li>
-    //             ))}
-    //         </ul>
-    //     )
-    // }
      handleQueryChange = (e) => {
       this.setState({
         query: e.target.value
@@ -58,6 +43,42 @@ class Search extends Component{
           jwt: this.state.jwt }
         }}/>
       }
+    }
+    getPopularMovies = (path) => {
+      fetch('http://localhost:3000' + path , {
+        headers: {
+          'Content-type': 'application/json',
+          'Authorization': `Bearer ${this.state.jwt}`
+        }
+        })
+        .then((response) => {
+          // console.log(response)
+          if(response.status == 200 || response.status == 201) {
+            // console.log(response)
+            return response.text()
+          } else if (response.status == 401 || response.status == 400 || response.status == 500 && this.mounted == true) {
+            this.setState({
+              redirect: false,
+              errorResult: 'Could not search movie.'
+            })
+            return
+          }
+        })
+        .then((data) => {
+          // console.log(data)
+          let res = JSON.parse(data)
+          // console.log(res)
+          res = res.results
+          if(this.mounted == true) {
+            this.setState({
+              popularMovies: res
+            })
+          }
+          console.log(this.state.popularMovies)
+        })
+        .catch((err) => {
+          console.log(err)
+        })
     }
 
      postAndFetchData = (path) => {
@@ -102,7 +123,7 @@ class Search extends Component{
 
     // Calls the postAndFetch function when submit button is clicked
      onSubmit = (e) => {
-      this.postAndFetchData('/movie/search')
+      this.postAndFetchData('/movie/search', 1)
     }
    
     // Sets variable to false when ready to leave page
