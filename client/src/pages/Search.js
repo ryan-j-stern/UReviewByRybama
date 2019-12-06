@@ -142,7 +142,7 @@ class Search extends Component{
     
     return (
       <div style={styling.mainDiv} >
-      <NavBar jwt={this.state.jwt}/>
+      <NavBar location={{state: {jwt: this.state.jwt}}}/>
 
         <img src= {logo} width = "400"/>
         <br></br> SEARCH:

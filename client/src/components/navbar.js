@@ -7,32 +7,31 @@ class NavBar extends Component{
   constructor(props) {
     super(props)
     this.state = {
-      jwt: props.jwt,
+      jwt: props.location.state.jwt,
       redirect: false
     }
-    // console.log('NAVBAR')
-    // console.log(this.state.jwt)
+    console.log('NAVBAR')
+    console.log(this.state.jwt)
   }
   render() {
     return(
       <Nav>
-        
+        <Link to={{
+            pathname: '/dashboard',
+            state: {
+              jwt: this.state.jwt
+            }
+          }}>Dashboard</Link>
         <Link to={{
             pathname: '/users/profile',
-            jwt: this.state.jwt
+            state: {
+              jwt: this.state.jwt
+            }
           }}>Profile</Link>
-     
-        <Nav.Item>
-          <Nav.Link eventKey="link-1">Link</Nav.Link>
-        </Nav.Item>
-        <Nav.Item>
-          <Nav.Link eventKey="link-2">Link</Nav.Link>
-        </Nav.Item>
-        <Nav.Item>
-          <Nav.Link eventKey="disabled" disabled>
-            Disabled
-          </Nav.Link>
-        </Nav.Item>
+        <Link to={{
+            pathname: '/'
+          }}>Logout</Link>
+        
       </Nav>
     )
   }
