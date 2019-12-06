@@ -10,7 +10,7 @@ const auth = require('../middleware/authorize')
 
 router.get('/search', auth, (req, res) => {
   try {
-    console.log('QUERY '+req.headers.query)
+    console.log('QUERY '+req.body.query)
     request({
       uri: `https://api.themoviedb.org/3/search/movie?api_key=${process.env.APIKEY}&language=en-US&query=${req.body.query}&page=1&include_adult=false`
     }, (err, response, body) => {
