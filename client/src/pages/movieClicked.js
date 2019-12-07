@@ -5,6 +5,8 @@ import { Redirect } from 'react-router-dom'
 import NavBar from '../components/navbar'
 import { Link } from 'react-router-dom'
 import { resetWarningCache } from 'prop-types';
+import Form from 'react-bootstrap/Form'
+import submitbutton from './images/submit.png'
 
 class SearchResults extends React.Component{
   constructor(props) {
@@ -17,7 +19,8 @@ class SearchResults extends React.Component{
       redirect: false,
       resultBody: {},
       resultPosts: [],
-      errorResult: ''
+      errorResult: '',
+      text: ''
     }
     this.getMovie('/movie/clicked')
   }
@@ -29,7 +32,8 @@ class SearchResults extends React.Component{
         'Authorization': `Bearer ${this.state.jwt}`,
         'id': this.state.movieId,
         'title': this.state.title
-      }
+      },
+      
       })
       .then((response) => {
         // console.log(response)
@@ -62,7 +66,7 @@ class SearchResults extends React.Component{
   }
 
   renderReviews = () => {
-    console.log("SEARCH RESULTS", this.state.resultPosts)
+    // console.log("SEARCH RESULTS", this.state.resultPosts)
     if(this.state.resultPosts){
       const poster = this.state.resultPosts.map(t =>  {
         return(
@@ -82,7 +86,51 @@ class SearchResults extends React.Component{
   }
 }
 
+// Tells component where to redirect to
+renderRedirect = () => {
+  if (this.state.redirect) {
+    return <Redirect to='/movie/clicked' />
+  }
+}
 
+onSubmit = (e) => {
+  try{
+    fetch('http://localhost:3000' + '/movie/clicked' , {
+    method: "POST",
+    headers: {
+      'Content-type': 'application/json',
+      'Authorization': `Bearer ${this.state.jwt}`,
+      'id': this.state.movieId,
+      'movietitle': this.state.title
+    },
+    body: JSON.stringify(this.state)
+    })
+    .then((response) => {
+      console.log(response.status)
+      if((response.status == 200 || response.status == 201) && this.mounted == true) {
+        this.setState({
+          redirect: true
+        })
+        return response.text()
+      } else if ((response.status == 401 || response.status == 400 || response.status == 500 ) && this.mounted == true) {
+        console.log(response)
+        return this.setState({
+          redirect: false,
+          errorResult: 'Couldn\'t create review.'
+        })
+      }
+    })
+  }catch(e) {
+    console.log("Yeah there was an error fam.")
+  }
+}
+
+handleReviewChange = (e) => {
+  this.setState({
+    text: e.target.value
+  })
+  console.log(this.state.review)
+}
 
   render(){
     // Sets query in state to be whatever the user is typing
@@ -116,6 +164,19 @@ class SearchResults extends React.Component{
     <h1> Reviews: </h1>
       <div>{this.renderReviews()}</div>
     </div>
+    <div>
+      <Form>
+        <Form.Group>
+        <Form.Label>Leave your review.</Form.Label>
+        <Form.Control as="textarea" rows="3" value={this.state.text} onChange={this.handleReviewChange} placeholder='You be the critic.'/>
+        </Form.Group>
+      </Form>
+      {/* <input type="input" name="review" value={this.state.review} onChange={this.handleReviewChange} /><br></br> */}
+      <Button variant="link" onClick={this.onSubmit}>
+      <img src={submitbutton} width = "200"/>
+      </Button>
+    </div>
+    
 
   </div>
 
