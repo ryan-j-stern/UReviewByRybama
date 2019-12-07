@@ -1,6 +1,7 @@
 .body {
   background-color: #0f0524;
   color: white;
+  border: none;
 
 }
 
@@ -8,15 +9,12 @@
     position: relative;
     margin: 0 auto;
     width: 800px;
-    margin-top: 10px;
-}
+    outline: none;
 
-.card-body {
-  color: black;
 }
 
 .search input {
-    height: 26px;
+    height: 40px;
     width: 100%;
     background-color: white;
     border-radius: 13px;
@@ -27,34 +25,24 @@
     border-color: #66b1ee;
 }
 
-.card-body {
+.card {
   background-color: #0f0524;
-  outline: none;
+  border-width: 0px;
   border-color: #0f0524;
   color: white;
   align-items: center;
+  overflow-wrap: normal;
 }
 
-.search .results {
-
-    display: block;
-    position: absolute;
-    background-color: #fdfdfd;
+.card-body {
+  background-color: #0f0524;
+  border-width: 0px;
+  border-color: #0f0524;
+  color: white;
+  align-items: center;
+  overflow-wrap: normal;
 }
 
-.search .results li {
-    display: flex;
-    align-items: center;
-    text-align: left;
-    height: 50px;
-    cursor: pointer;
-}
-
-.search .results li img {
-    width: 30px;
-    margin-right: 5px;
-}
-
-.search .results li:hover {
-    background: rgba(88, 85, 85, 0.1);
+.card-title {
+    word-wrap: break-word;
 }

@@ -128,7 +128,7 @@ class SignUp extends Component {
           <div>
             {this.renderRedirect()}
             <Button variant="link" onClick={this.onSubmit} >
-            SUBMIT
+            <img src={submitbutton} width = "200"/>
             </Button>
             <p>{this.state.result}</p>
           </div>

@@ -152,7 +152,8 @@ class Login extends Component {
             <p>{this.state.result}</p>
             <div>
               {this.renderRedirect()}
-              <Button variant="link" onClick={(e) => this.onSubmit()} > SUBMIT
+              <Button variant="link" onClick={(e) => this.onSubmit()} >
+              <img src={submitbutton} width = "200"/>
               </Button>
               <p>{this.state.result}</p>
             </div>
