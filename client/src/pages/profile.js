@@ -80,7 +80,8 @@ class Profile extends Component{
                    jwt: this.state.jwt,
                    id: t.id,
                           } */}
-                <h2 className="card-title">{t.text}</h2> 
+                <h4>{t.movieTitle}</h4>
+                <h6 className="card-title">{t.text}</h6> 
 
               </div>
           </div>

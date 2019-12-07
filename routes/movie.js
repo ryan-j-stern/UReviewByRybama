@@ -67,11 +67,12 @@ router.get('/clicked', auth, (req, res) => {
 router.post('/clicked', auth, (req, res) => {
   try{
     console.log(req.userData)
+    console.log(req.headers)
     const movieReview = new MovieReview({
       _id: new mongoose.Types.ObjectId(),
       text: req.body.text,
       movieId: req.headers.id,
-      movieTitle: req.headers.movieTitle,
+      movieTitle: req.headers.movietitle,
       owner: req.userData.userId
     })
 
