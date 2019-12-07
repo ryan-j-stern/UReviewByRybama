@@ -125,6 +125,71 @@ onSubmit = (e) => {
   }
 }
 
+addToWishList = (e) => {
+  try{
+    fetch('http://localhost:3000' + `/movie/add-to-wishlist` , {
+    method: "PUT",
+    headers: {
+      'Content-type': 'application/json',
+      'Authorization': `Bearer ${this.state.jwt}`,
+      'id': this.state.movieId,
+      'title': this.state.title
+    },
+    body: JSON.stringify(this.state)
+    })
+    .then((response) => {
+      console.log(response.status)
+      if((response.status == 200 || response.status == 201) && this.mounted == true) {
+        this.setState({
+          redirect: true
+        })
+        return response.text()
+      } else if ((response.status == 401 || response.status == 400 || response.status == 500 ) && this.mounted == true) {
+        console.log(response)
+        return this.setState({
+          redirect: false,
+          errorResult: 'Couldn\'t create review.'
+        })
+      }
+    })
+  }catch(e) {
+    console.log("Yeah there was an error fam.")
+  }
+}
+
+addToWatchedList = (e) => {
+  try{
+    console.log(this.state.title)
+    fetch('http://localhost:3000' + `/movie/add-to-watchlist` , {
+    method: "PUT",
+    headers: {
+      'Content-type': 'application/json',
+      'Authorization': `Bearer ${this.state.jwt}`,
+      'id': this.state.movieId,
+      'title': this.state.title
+    },
+    body: JSON.stringify(this.state)
+    })
+    .then((response) => {
+      console.log(response.status)
+      if((response.status == 200 || response.status == 201) && this.mounted == true) {
+        this.setState({
+          redirect: true
+        })
+        return response.text()
+      } else if ((response.status == 401 || response.status == 400 || response.status == 500 ) && this.mounted == true) {
+        console.log(response)
+        return this.setState({
+          redirect: false,
+          errorResult: 'Couldn\'t create review.'
+        })
+      }
+    })
+  }catch(e) {
+    console.log("Yeah there was an error fam.")
+  }
+}
+
 handleReviewChange = (e) => {
   this.setState({
     text: e.target.value
@@ -176,7 +241,10 @@ handleReviewChange = (e) => {
       <img src={submitbutton} width = "200"/>
       </Button>
     </div>
-    
+    <div>
+    <Button variant="warning" onClick={this.addToWishList}>Add to WishList</Button>
+    <Button variant="danger" onClick={this.addToWatchedList}>Add to WatchedList</Button>
+    </div>
 
   </div>
 
