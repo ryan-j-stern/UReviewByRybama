@@ -144,7 +144,7 @@ class Search extends Component{
             if(this.state.popularMovies){
               const poster = this.state.popularMovies.map(t =>  {
                 return(
-                  <div class="card border-right-0 border-top-0 border-bottom-0 border-left-0" style={{maxWidth: '20rem'}}>
+                  <div class="card border-right-0 border-top-0 border-bottom-0 border-left-0" style={{maxWidth: '18%'}}>
                       <div class="card-body">
                       <img src={`https://image.tmdb.org/t/p/w500${t.poster_path}`} width = "300" style={styling.img}/>
 
