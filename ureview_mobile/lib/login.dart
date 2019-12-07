@@ -10,6 +10,35 @@ class Login extends StatefulWidget {
 
 class _LoginState extends State<Login> {
 
+
+  // lines 15 - 39 are for keeping track of what the user types in
+  final TextEditingController _emailFilter = new TextEditingController();
+  final TextEditingController _passwordFilter = new TextEditingController();
+  String _email = "";
+  String _password = "";
+
+  _LoginState() {
+        _emailFilter.addListener(_emailListen);
+        _passwordFilter.addListener(_passwordListen);
+  }
+  void _emailListen() {
+    if (_emailFilter.text.isEmpty) {
+      _email = "";
+      } 
+      else {
+        _email = _emailFilter.text;
+        }
+  }
+  void _passwordListen() {
+    if (_passwordFilter.text.isEmpty) {
+      _password = "";
+    } 
+    else {
+      _password = _passwordFilter.text;
+    }
+  }
+
+  // lines 40 - 51 are examples of how to hit the api, need to figure out how to print the data to screen
   String url = 'https://randomuser.me/api';
 
   Future<String> makeRequest() async {
@@ -31,12 +60,34 @@ class _LoginState extends State<Login> {
         title: Text('Login'),
       ),
       body: new Center( 
-        child: RaisedButton(
-          child: Text('Make Request'),
-          onPressed: makeRequest,
-        ),
-        
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget> [
+            RaisedButton(
+              child: Text('Make Request'),
+              onPressed: makeRequest,
+            ),
+            TextField(
+              obscureText: false,
+              decoration: InputDecoration(
+                border: OutlineInputBorder(),
+                labelText: 'Username',
+              ),
+            ),
+            TextField(
+              obscureText: true,
+              decoration: InputDecoration(
+                border: OutlineInputBorder(),
+                labelText: 'Password',
+              ),
+            ),
+            RaisedButton(
+              child: Text('Login'),
+              onPressed: null,
+            ),
+          ]
       ),
+      )
     );
   }
 }
