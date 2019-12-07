@@ -90,13 +90,29 @@ class SearchResults extends React.Component{
   return (
     <div style={styling.mainDiv} >
     <NavBar location={{state: {jwt: this.state.jwt}}}/>
-    <img src={`https://image.tmdb.org/t/p/w500${this.state.resultBody.poster_path}`} width = "300" style={styling.img}/>
-    <h1>{this.state.resultBody.title}</h1>
-    <h4>{this.state.resultBody.tagline}</h4>
-    <p>{this.state.resultBody.overview}</p>
-    <p>{this.state.resultBody.posts}</p>
-    <div>{this.renderReviews()}</div>
+
+    <div class="card mb-3" style="max-width: 540px;">
+      <div class="row no-gutters">
+        <div class="col-md-4">
+          <img src={`https://image.tmdb.org/t/p/w500${this.state.resultBody.poster_path}`} class="card-img"/>
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title">{this.state.resultBody.title}</h5>
+            <p class="card-text">{this.state.resultBody.tagline}</p>
+            <p class="card-text"><small class="text-muted">{this.state.resultBody.overview}</small></p>
+          </div>
+        </div>
+      </div>
     </div>
+
+    <div style={styling.reviewDiv}>
+
+    </div>
+
+  </div>
+
+
     );
   }
 };
@@ -114,8 +130,8 @@ const styling = {
     color: 'white',
     marginRight: '30%'
   },
-  buttonDiv: {
-    justifyContent: 'center',
+  reviewDiv: {
+    justifyContent: 'left',
   },
   deckDiv: {
     justifyContent: 'center',

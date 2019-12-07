@@ -72,7 +72,6 @@ class Profile extends Component{
         return(
           <div class="card border-right-0 border-top-0 border-bottom-0 border-left-0">
               <div class="card-body">
-              {/* <img src={`https://image.tmdb.org/t/p/w500${t.poster_path}`} width = "300" style={styling.img}/> */}
 
                 {/* <Link to={{
                            pathname: '/movie/clicked',
@@ -129,7 +128,6 @@ class Profile extends Component{
         return(
           <div class="card border-right-0 border-top-0 border-bottom-0 border-left-0">
               <div class="card-body">
-              {/* <img src={`https://image.tmdb.org/t/p/w500${t.poster_path}`} width = "300" style={styling.img}/> */}
 
                 <Link to={{
                    pathname: '/movie/clicked',
@@ -160,12 +158,12 @@ class Profile extends Component{
 
     <div style={styling.headerDiv} >
     <img src='https://i.imgur.com/5AFVMLg.png' width = "400"/>
-    </div>
 
-    <div>
-      <h1>{`${this.state.username}`}</h1>
-      <br></br>
-      </div>
+    <u><h1>{`${this.state.username}`}'s profile</h1></u>
+    <br></br>
+
+
+    </div>
 
 
       <div class="container">
