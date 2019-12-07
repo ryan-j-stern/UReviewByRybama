@@ -12,6 +12,11 @@ const ReviewSchema = new mongoose.Schema({
     required: true,
     unique: false
   },
+  movieTitle: {
+    type: String,
+    required: true,
+    unique: false
+  },
   owner: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',

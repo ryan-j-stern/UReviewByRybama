@@ -105,7 +105,7 @@ class Profile extends Component{
               {/* <img src={`https://image.tmdb.org/t/p/w500${t.poster_path}`} width = "300" style={styling.img}/> */}
 
                 <Link to={{
-                           pathname: '/movie/clicked',
+                   pathname: '/movie/clicked',
                    state: {
                    jwt: this.state.jwt,
                    id: t.id,

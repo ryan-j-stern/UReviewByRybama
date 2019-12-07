@@ -13,6 +13,7 @@ class SearchResults extends React.Component{
     this.state = {
       jwt: props.location.state.jwt,
       movieId: props.location.state.id,
+      title: props.location.state.title,
       redirect: false,
       resultBody: {},
       resultPosts: [],
@@ -26,7 +27,8 @@ class SearchResults extends React.Component{
       headers: {
         'Content-type': 'application/json',
         'Authorization': `Bearer ${this.state.jwt}`,
-        'id': this.state.movieId
+        'id': this.state.movieId,
+        'title': this.state.title
       }
       })
       .then((response) => {

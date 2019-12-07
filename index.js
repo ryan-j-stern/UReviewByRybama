@@ -12,7 +12,7 @@ const movieRouter = require('./routes/movie')
 
 // Connecting to mongo database
 try{
-    mongoose.connect('mongodb+srv://movietime:movietimedbpw@movietime-fseje.mongodb.net/test?retryWrites=true&w=majority',{
+    mongoose.connect('mongodb+srv://movietime:movietimedbpw@ureview-fseje.mongodb.net/test?retryWrites=true&w=majority',{
     useNewUrlParser: true,
     useFindAndModify: false
   })

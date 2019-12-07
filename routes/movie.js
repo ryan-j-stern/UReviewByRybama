@@ -71,6 +71,7 @@ router.post('/clicked', auth, (req, res) => {
       _id: new mongoose.Types.ObjectId(),
       text: req.body.text,
       movieId: req.headers.id,
+      movieTitle: req.headers.movieTitle,
       owner: req.userData.userId
     })
 
