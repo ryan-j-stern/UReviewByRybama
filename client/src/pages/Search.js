@@ -5,7 +5,9 @@ import { Redirect } from 'react-router-dom'
 import NavBar from '../components/navbar'
 import { Link } from 'react-router-dom'
 import submitbutton from './images/submit.png'
+import moviereel from './images/moviereel.png'
 
+console.log(moviereel);
 console.log(submitbutton);
 
 class Search extends Component{
@@ -179,21 +181,22 @@ class Search extends Component{
       <div style={styling.mainDiv} >
       <NavBar location={{state: {jwt: this.state.jwt}}}/>
 
-        <img src='https://i.imgur.com/5AFVMLg.png' width = "400"/>
-        <br></br> <h4>SEARCH:</h4>
+        <img src='https://i.imgur.com/5AFVMLg.png' width = "400"/><br></br>
+        <h4>SEARCH:</h4>
         <div className="search">
         {this.renderRedirect()}
               <input type="input" name="query" value={this.state.query} onChange={this.handleQueryChange} /><br></br>
               <Button variant="link" onClick={this.onSubmit}>
               <img src={submitbutton} width = "200"/>
               </Button>
-        </div> <br></br>
-
+        </div>
       <div class="row no gutters">
         <div style={styling.deckDiv}>
                 {this.renderCards()}
             </div>
         </div>
+            <img src={moviereel} width="400"/> <img src={moviereel} width="400"/>  <img src={moviereel} width="400"/>  
+          <br></br>
       </div>
       );
     }

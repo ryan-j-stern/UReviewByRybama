@@ -5,9 +5,15 @@ import { Button } from 'react-bootstrap/'
 import { Redirect } from 'react-router-dom'
 import NavBar from '../components/navbar'
 import { Link } from 'react-router-dom'
+import wishl from './images/wishlist.png';
+import watchedl from './images/watchedlist.png';
+import urev from './images/yourreviews.png';
 
 
 console.log(logo);
+console.log(wishl);
+console.log(watchedl);
+console.log(urev);
 
 class Profile extends Component{
   constructor(props) {
@@ -122,7 +128,6 @@ class Profile extends Component{
         return(
           <div class="card border-right-0 border-top-0 border-bottom-0 border-left-0">
               <div class="card-body">
-
                 <Link to={{
                    pathname: '/movie/clicked',
                    state: {
@@ -148,30 +153,30 @@ class Profile extends Component{
   render(){
   return (
     <div style={styling.mainDiv} >
-    <NavBar location={{state: {jwt: this.state.jwt}}}/>
+      <NavBar location={{state: {jwt: this.state.jwt}}}/>
 
-    <div style={styling.headerDiv} >
-    <img src='https://i.imgur.com/5AFVMLg.png' width = "400"/>
+      <div style={styling.headerDiv} >
+      <img src='https://i.imgur.com/5AFVMLg.png' width = "400"/>
 
-    <u><h1>{`${this.state.username}`}'s profile</h1></u>
-    <br></br>
-    </div>
+      <u><h1>{`${this.state.username}`}'s profile</h1></u>
+      <br></br>
+      </div>
 
 
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-3">
-          <h2>Wish List:</h2><br></br>
+      <div class="container" style={styling.mainDiv}>
+        <div class="row" style={styling.mainDiv} >
+          <div class="col-sm-3" style={styling.mainDiv}>
+          <img src={wishl} width = "300"/><br></br>
             <div>{(this.state.wishList.length == 0) ? (<p>No movies added to WishList yet.</p>) : this.renderCardsForWishList()}<br></br></div>
             <br></br>
           </div>
-          <div class="col-sm-4">
-          <h2>Watched List:</h2><br></br>
+          <div class="col-sm-3" style={styling.mainDiv}>
+          <img src={watchedl} width = "300"/><br></br>
             <div>{(this.state.watchedList.length == 0) ? (<p>No movies added to WatchedList yet.</p>) : this.renderCardsForWatchedList()}</div>
             <br></br>
           </div>
-          <div class="col-sm-5">
-            <h2>Your Reviews:</h2><br></br>
+          <div class="col-sm-4" style={styling.mainDiv}>
+            <img src={urev} width = "300"/><br></br>
             <div>{(this.state.reviews.length == 0) ? (<p>No reviews yet.</p>) : this.renderCardsForReviews()}</div>
           </div>
           </div>
@@ -185,12 +190,8 @@ class Profile extends Component{
 const styling = {
   mainDiv: {
     background: '#0f0524',
-    textAlign: 'left',
+    textAlign: 'center',
     color: 'white'
-  },
-  signup: {
-    color: 'white',
-    marginRight: '30%'
   },
   headerDiv: {
     textAlign: 'center',

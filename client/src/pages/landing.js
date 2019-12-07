@@ -43,8 +43,8 @@ class Landing extends Component {
       <div> <img src={logo} width = "700"/> </div>
       <div style = {styling.headerDiv}> <img src={banner} width = "1000"/> </div>
       <div style={styling.buttonDiv}>
-        <Link to="/users/signup"><input type="image" src={signuplogo} width = "600"/></Link>
-        <Link to="/users/login"><input type="image" src={loginlogo} width = "600"/></Link>
+        <Link to="/users/signup"><input type="image" src={signuplogo} width = "400"/></Link>
+        <Link to="/users/login"><input type="image" src={loginlogo} width = "400"/></Link>
       </div>
     </div>
     )
@@ -58,7 +58,8 @@ const styling = {
     textAlign: 'center'
   },
   signup: {
-    marginRight: '30%'
+    marginRight: '30%',
+    background: '#0f0524'
   },
   headerDiv: {
     background: '#f8f9fa'

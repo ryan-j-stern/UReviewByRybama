@@ -4,6 +4,9 @@ import { Button } from 'react-bootstrap/'
 import { Redirect } from 'react-router-dom'
 import NavBar from '../components/navbar'
 import { Link } from 'react-router-dom'
+import moviereel from './images/moviereel.png'
+
+console.log(moviereel);
 
 class SearchResults extends React.Component{
   constructor(props) {
@@ -65,6 +68,7 @@ class SearchResults extends React.Component{
             {this.renderCards()}
           </div>
         </div>
+        <img src={moviereel} width="400"/> <img src={moviereel} width="400"/>  <img src={moviereel} width="400"/>  
       </div>
       );
     }

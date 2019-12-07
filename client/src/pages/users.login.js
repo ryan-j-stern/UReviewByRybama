@@ -155,7 +155,6 @@ class Login extends Component {
               <Button variant="link" onClick={(e) => this.onSubmit()} >
               <img src={submitbutton} width = "200"/>
               </Button>
-              <p>{this.state.result}</p>
             </div>
           </Form>
         </div>

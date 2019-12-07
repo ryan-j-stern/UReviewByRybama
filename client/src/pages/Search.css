@@ -36,6 +36,10 @@
   overflow-wrap: normal;
 }
 
+.btn-toolbar {
+  marginleft: 15px;
+}
+
 .card-body {
   background-color: #0f0524;
   border-width: 0px;

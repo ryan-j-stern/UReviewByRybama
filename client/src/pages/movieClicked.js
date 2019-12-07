@@ -7,7 +7,13 @@ import { Link } from 'react-router-dom'
 import { resetWarningCache } from 'prop-types';
 import Form from 'react-bootstrap/Form'
 import submitbutton from './images/submit.png'
+import AllReviews from './images/allreviews.png'
+import LeaveReview from './images/ureviewheaders.png'
+import moviereel from './images/moviereel.png'
 
+console.log(moviereel);
+console.log(AllReviews);
+console.log(LeaveReview);
 
 class MovieClicked extends React.Component{
   constructor(props) {
@@ -34,7 +40,7 @@ class MovieClicked extends React.Component{
         'id': this.state.movieId,
         'title': this.state.title
       },
-      
+
       })
       .then((response) => {
         // console.log(response)
@@ -73,7 +79,7 @@ class MovieClicked extends React.Component{
         return(
           <div class="card border-right-0 border-top-0 border-bottom-0 border-left-0" style={{maxWidth: '18%'}}>
               <div class="card-body">
-              <h5>{t.owner.username} says</h5>
+              <h5><b>{t.owner.username}</b> says</h5>
               {t.text}
               </div>
           </div>
@@ -123,6 +129,12 @@ onSubmit = (e) => {
     })
   }catch(e) {
     console.log("Yeah there was an error fam.")
+  }
+}
+
+renderRedirect = () => {
+  if (this.state.redirect) {
+    window.location.reload()
   }
 }
 
@@ -198,6 +210,8 @@ handleReviewChange = (e) => {
   console.log(this.state.review)
 }
 
+
+
   render(){
     // Sets query in state to be whatever the user is typing
 
@@ -222,31 +236,38 @@ handleReviewChange = (e) => {
             </div>
           </div>
         </div>
+        <div class = "btn-toolbar">
+        <br></br>
+        <div><Button variant="warning" onClick={this.addToWishList}>Add to Wish List</Button></div>
+        <div><Button variant="danger" onClick={this.addToWatchedList}>Add to Watched List</Button></div>
+        </div>
       </div>
+      <img src={AllReviews} width = "400"/>
     </div>
 
     <div style={styling.reviewDiv}>
-    <h1> <b><u> Reviews: </u> </b></h1>
-      <div>{this.renderReviews()}</div>
-    </div>
-    <div>
-      <Form>
-        <Form.Group>
-        <Form.Label>Leave your review.</Form.Label>
-        <Form.Control as="textarea" rows="3" value={this.state.text} onChange={this.handleReviewChange} placeholder='You be the critic.'/>
-        </Form.Group>
-      </Form>
-      {/* <input type="input" name="review" value={this.state.review} onChange={this.handleReviewChange} /><br></br> */}
-      <Button variant="link" onClick={this.onSubmit}>
-      <img src={submitbutton} width = "200"/>
-      </Button>
-    </div>
-    <div>
-    <Button variant="warning" onClick={this.addToWishList}>Add to WishList</Button>
-    <Button variant="danger" onClick={this.addToWatchedList}>Add to WatchedList</Button>
+      <div>{(this.state.resultPosts.length == 0) ? (<p>No reviews yet.</p>) : this.renderReviews()}</div>
     </div>
 
-  </div>
+
+    <div class="form-group row" style={styling.mainDiv}>
+      <div class="col-xs-5">
+          <Form>
+            <Form.Group>
+            <img src={LeaveReview} width = "450"/>
+            <Form.Control as="textarea" rows="3" value={this.state.text} onChange={this.handleReviewChange} placeholder='You be the critic.'/>
+            </Form.Group>
+          </Form>
+          {/* <input type="input" name="review" value={this.state.review} onChange={this.handleReviewChange} /><br></br> */}
+          <Button variant="link" onClick={this.onSubmit}>
+          <img src={submitbutton} width = "200"/>
+          </Button>
+          </div>
+          {this.renderRedirect()}
+      </div>
+      <img src={moviereel} width="400"/> <img src={moviereel} width="400"/>  <img src={moviereel} width="400"/>
+    <br></br>
+    </div>
 
 
     );
@@ -267,8 +288,7 @@ const styling = {
   reviewDiv: {
     width: '100%',
     height: '100%',
-    marginLeft: '5%',
-    justifyContent: 'left',
+    justifyContent: 'center',
     background: '#0f0524',
     color: 'white'
   },
