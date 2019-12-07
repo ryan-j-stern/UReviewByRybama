@@ -48,6 +48,7 @@ router.get('/clicked', auth, (req, res) => {
 
     // Getting all review posts associated with the individual movie
     MovieReview.find({movieId: req.headers.id})
+    .populate('owner')
     .exec()
     .then(reviews => {
       res.status(200).json({
@@ -70,6 +71,7 @@ router.post('/clicked', auth, (req, res) => {
       _id: new mongoose.Types.ObjectId(),
       text: req.body.text,
       movieId: req.headers.id,
+      movieTitle: req.headers.movieTitle,
       owner: req.userData.userId
     })
 
