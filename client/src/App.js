@@ -9,6 +9,7 @@ import Login from './pages/users.login'
 import Search from './pages/Search.js'
 import Profile from './pages/profile'
 import SearchResults from './pages/SearchResults.js'
+import MovieClicked from './pages/movieClicked'
 
 
 // Maps out every URL that has a component and links that URL with corresponding component
@@ -23,6 +24,7 @@ function App() {
           <Route exact path='/dashboard' component={Search} />
           <Route path='/search-results' component={SearchResults} />
           <Route path='/users/profile' component={Profile} />
+          <Route path='/movie/clicked' component={MovieClicked} />
         </Switch>
       </Router>
     </div>
