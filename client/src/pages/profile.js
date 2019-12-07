@@ -6,6 +6,7 @@ import { Redirect } from 'react-router-dom'
 import NavBar from '../components/navbar'
 import { Link } from 'react-router-dom'
 
+
 console.log(logo);
 
 class Profile extends Component{
@@ -72,16 +73,8 @@ class Profile extends Component{
         return(
           <div class="card border-right-0 border-top-0 border-bottom-0 border-left-0">
               <div class="card-body">
-
-                {/* <Link to={{
-                           pathname: '/movie/clicked',
-                   state: {
-                   jwt: this.state.jwt,
-                   id: t.id,
-                          } */}
                 <h4>{t.movieTitle}</h4>
                 <h6 className="card-title">{t.text}</h6>
-
               </div>
           </div>
       )
@@ -162,8 +155,6 @@ class Profile extends Component{
 
     <u><h1>{`${this.state.username}`}'s profile</h1></u>
     <br></br>
-
-
     </div>
 
 
