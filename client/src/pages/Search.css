@@ -46,3 +46,7 @@
 .card-title {
     word-wrap: break-word;
 }
+
+.container {
+  padding: 15px 30px;
+}

@@ -70,7 +70,7 @@ class Profile extends Component{
       const poster = this.state.reviews.map(t =>  {
         console.log(t)
         return(
-          <div class="card">
+          <div class="card border-right-0 border-top-0 border-bottom-0 border-left-0">
               <div class="card-body">
               {/* <img src={`https://image.tmdb.org/t/p/w500${t.poster_path}`} width = "300" style={styling.img}/> */}
 
@@ -80,7 +80,7 @@ class Profile extends Component{
                    jwt: this.state.jwt,
                    id: t.id,
                           } */}
-                <h2 className="card-title">{t.text}</h2> 
+                <h4 className="card-title">{t.text}</h4>
 
               </div>
           </div>
@@ -100,17 +100,15 @@ class Profile extends Component{
       const poster = this.state.watchedList.map(t =>  {
         console.log(t)
         return(
-          <div class="card">
+          <div class="card border-right-0 border-top-0 border-bottom-0 border-left-0">
               <div class="card-body">
-              {/* <img src={`https://image.tmdb.org/t/p/w500${t.poster_path}`} width = "300" style={styling.img}/> */}
-
                 <Link to={{
-                           pathname: '/movie/clicked',
+                   pathname: '/movie/clicked',
                    state: {
                    jwt: this.state.jwt,
                    id: t.id,
                           }
-                }}><h2 className="card-title">{t.title}</h2> </Link>
+}}style={{ color: '#FFF' }}>{t.title}</Link> <br></br>
 
               </div>
           </div>
@@ -129,20 +127,20 @@ class Profile extends Component{
       const poster = this.state.wishList.map(t =>  {
         console.log(t)
         return(
-          <div class="card">
+          <div class="card border-right-0 border-top-0 border-bottom-0 border-left-0">
               <div class="card-body">
               {/* <img src={`https://image.tmdb.org/t/p/w500${t.poster_path}`} width = "300" style={styling.img}/> */}
 
                 <Link to={{
-                           pathname: '/movie/clicked',
+                   pathname: '/movie/clicked',
                    state: {
                    jwt: this.state.jwt,
                    id: t.id,
                           }
-                }}><h2 className="card-title">{t.title}</h2> </Link>
-
+                }}style={{ color: '#FFF' }}>{t.title}</Link>
               </div>
           </div>
+
       )
     })
     return(
@@ -158,19 +156,38 @@ class Profile extends Component{
   render(){
   return (
     <div style={styling.mainDiv} >
-
     <NavBar location={{state: {jwt: this.state.jwt}}}/>
+
+    <div style={styling.headerDiv} >
+    <img src='https://i.imgur.com/5AFVMLg.png' width = "400"/>
+    </div>
 
     <div>
       <h1>{`${this.state.username}`}</h1>
-      <h2>WishList</h2>
-      <div>{(this.state.wishList.length == 0) ? (<p>No movies added to WishList yet.</p>) : this.renderCardsForWishList()}</div>
-      <h2>WatchedList</h2>
-      <div>{(this.state.watchedList.length == 0) ? (<p>No movies added to WatchedList yet.</p>) : this.renderCardsForWatchedList()}</div>
-      <h2>Your Reviews</h2>
-      <div>{(this.state.reviews.length == 0) ? (<p>No reviews yet.</p>) : this.renderCardsForReviews()}</div>
-    </div>
-    </div>
+      <br></br>
+      </div>
+
+
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-3">
+          <h2>Wish List:</h2><br></br>
+            <div>{(this.state.wishList.length == 0) ? (<p>No movies added to WishList yet.</p>) : this.renderCardsForWishList()}<br></br></div>
+            <br></br>
+          </div>
+          <div class="col-sm-4">
+          <h2>Watched List:</h2><br></br>
+            <div>{(this.state.watchedList.length == 0) ? (<p>No movies added to WatchedList yet.</p>) : this.renderCardsForWatchedList()}</div>
+            <br></br>
+          </div>
+          <div class="col-sm-5">
+            <h2>Your Reviews:</h2><br></br>
+            <div>{(this.state.reviews.length == 0) ? (<p>No reviews yet.</p>) : this.renderCardsForReviews()}</div>
+          </div>
+          </div>
+          </div>
+        </div>
+
   );}
 };
 
@@ -178,15 +195,15 @@ class Profile extends Component{
 const styling = {
   mainDiv: {
     background: '#0f0524',
-    textAlign: 'center',
+    textAlign: 'left',
     color: 'white'
   },
   signup: {
     color: 'white',
     marginRight: '30%'
   },
-  buttonDiv: {
-    justifyContent: 'center',
+  headerDiv: {
+    textAlign: 'center',
 
   }
 }
