@@ -66,7 +66,7 @@ class SearchResults extends React.Component{
     if(this.state.resultPosts){
       const poster = this.state.resultPosts.map(t =>  {
         return(
-          <div class="card border-right-0 border-top-0 border-bottom-0 border-left-0" style={{maxWidth: '20rem'}}>
+          <div class="card border-right-0 border-top-0 border-bottom-0 border-left-0" style={{maxWidth: '18%'}}>
               <div class="card-body">
               <h5>{t.owner.username} says</h5>
               {t.text}
@@ -91,23 +91,30 @@ class SearchResults extends React.Component{
     <div style={styling.mainDiv} >
     <NavBar location={{state: {jwt: this.state.jwt}}}/>
 
-    <div class="card mb-3" style="max-width: 540px;">
+
+    <img src='https://i.imgur.com/5AFVMLg.png' width = "400"/>
+
+
+    <div class="card border-right-0 border-top-0 border-bottom-0 border-left-0">
       <div class="row no-gutters">
-        <div class="col-md-4">
-          <img src={`https://image.tmdb.org/t/p/w500${this.state.resultBody.poster_path}`} class="card-img"/>
+        <div class="col-md-2">
+          <img src={`https://image.tmdb.org/t/p/w500${this.state.resultBody.poster_path}`} class="card-img" />
         </div>
-        <div class="col-md-8">
+        <div class="col-md-6">
           <div class="card-body">
-            <h5 class="card-title">{this.state.resultBody.title}</h5>
-            <p class="card-text">{this.state.resultBody.tagline}</p>
-            <p class="card-text"><small class="text-muted">{this.state.resultBody.overview}</small></p>
+            <h1 class="card-title">{this.state.resultBody.title}</h1>
+            <h4 class="card-text">{this.state.resultBody.tagline}</h4><br></br>
+            <h5 class="card-text">{this.state.resultBody.overview}</h5>
+
+
           </div>
         </div>
       </div>
     </div>
 
     <div style={styling.reviewDiv}>
-
+    <h1> Reviews: </h1>
+      <div>{this.renderReviews()}</div>
     </div>
 
   </div>
@@ -126,12 +133,10 @@ const styling = {
     outline: 'none',
     justifyContent: 'center',
   },
-  signup: {
-    color: 'white',
-    marginRight: '30%'
-  },
   reviewDiv: {
-    justifyContent: 'left',
+    justifyContent: 'center',
+    background: '#0f0524',
+    color: 'black'
   },
   deckDiv: {
     justifyContent: 'center',
@@ -139,7 +144,8 @@ const styling = {
     outline: 'none',
     border: 'none',
     overflowWrap: 'normal',
-    marginLeft:'7%'
+    marginLeft:'7%',
+    background: '#0f0524',
   }
 }
 
