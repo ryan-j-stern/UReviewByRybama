@@ -6,7 +6,8 @@ import NavBar from '../components/navbar'
 import { Link } from 'react-router-dom'
 import { resetWarningCache } from 'prop-types';
 
-class SearchResults extends React.Component{
+
+class MovieClicked extends React.Component{
   constructor(props) {
     super(props)
     // let resultList = null
@@ -89,31 +90,30 @@ class SearchResults extends React.Component{
 
   return (
     <div style={styling.mainDiv} >
+
     <NavBar location={{state: {jwt: this.state.jwt}}}/>
-
-
     <img src='https://i.imgur.com/5AFVMLg.png' width = "400"/>
 
-
-    <div class="card border-right-0 border-top-0 border-bottom-0 border-left-0">
-      <div class="row no-gutters">
-        <div class="col-md-2">
-          <img src={`https://image.tmdb.org/t/p/w500${this.state.resultBody.poster_path}`} class="card-img" />
+    <div style={styling.cardDiv}>
+    <div class="card border-right-0 border-top-0 border-bottom-0 border-left-0" style={styling.cardDiv}>
+      <div class="row no gutter" style={styling.cardDiv}>
+        <div class="col-md-2" style={styling.cardDiv}>
+          <img src={`https://image.tmdb.org/t/p/w500${this.state.resultBody.poster_path}`} class="card-img" style={styling.posterDiv}/>
         </div>
-        <div class="col-md-6">
-          <div class="card-body">
-            <h1 class="card-title">{this.state.resultBody.title}</h1>
+        <div class="col-md-6" style={styling.cardDiv} >
+          <div class="card-body" style={styling.cardDiv}>
+            <h1 class="card-title"><b><u>{this.state.resultBody.title} </u> </b></h1>
             <h4 class="card-text">{this.state.resultBody.tagline}</h4><br></br>
             <h5 class="card-text">{this.state.resultBody.overview}</h5>
 
-
+            </div>
           </div>
         </div>
       </div>
     </div>
 
     <div style={styling.reviewDiv}>
-    <h1> Reviews: </h1>
+    <h1> <b><u> Reviews: </u> </b></h1>
       <div>{this.renderReviews()}</div>
     </div>
 
@@ -127,6 +127,8 @@ class SearchResults extends React.Component{
 
 const styling = {
   mainDiv: {
+    width: '100%',
+    height: '100%',
     background: '#0f0524',
     textAlign: 'center',
     color: 'white',
@@ -134,9 +136,22 @@ const styling = {
     justifyContent: 'center',
   },
   reviewDiv: {
+    width: '100%',
+    height: '100%',
+    marginLeft: '5%',
+    justifyContent: 'left',
+    background: '#0f0524',
+    color: 'white'
+  },
+  cardDiv: {
     justifyContent: 'center',
     background: '#0f0524',
-    color: 'black'
+    color: 'white',
+
+  },
+  posterDiv: {
+    border: '5px',
+    outline: '5px',
   },
   deckDiv: {
     justifyContent: 'center',
@@ -149,4 +164,4 @@ const styling = {
   }
 }
 
-export default SearchResults;
+export default MovieClicked;

@@ -202,7 +202,7 @@ class Search extends Component{
 
 const styling = {
   mainDiv: {
-    background: '#0f0524',
+    backgroundColor: '#0f0524',
     textAlign: 'center',
     color: 'white',
     border: 'none',
@@ -217,6 +217,7 @@ const styling = {
     justifyContent: 'center',
   },
   deckDiv: {
+    backgroundColor:' #0f0524',
     justifyContent: 'center',
     alignContent: 'center',
     outline: 'none',
