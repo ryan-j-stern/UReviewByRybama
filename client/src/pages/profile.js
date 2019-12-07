@@ -79,7 +79,8 @@ class Profile extends Component{
                    jwt: this.state.jwt,
                    id: t.id,
                           } */}
-                <h4 className="card-title">{t.text}</h4>
+                <h4>{t.movieTitle}</h4>
+                <h6 className="card-title">{t.text}</h6>
 
               </div>
           </div>
@@ -107,7 +108,7 @@ class Profile extends Component{
                    jwt: this.state.jwt,
                    id: t.id,
                           }
-}}style={{ color: '#FFF' }}>{t.title}</Link> <br></br>
+                  }}style={{ color: '#FFF' }}>{t.title}</Link> <br></br>
 
               </div>
           </div>
