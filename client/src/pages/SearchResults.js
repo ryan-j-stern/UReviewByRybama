@@ -35,7 +35,8 @@ class SearchResults extends React.Component{
                            pathname: '/movie/clicked',
                            state: {
                            jwt: this.state.jwt,
-                           id: t.id,
+                           movieId: t.id,
+                           title: t.title
                           }
                       }} style={{ color: '#FFF' }}><h4 className="card-title">{t.title}</h4> </Link>
 
