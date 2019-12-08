@@ -62,7 +62,7 @@ const styling = {
     background: '#0f0524'
   },
   headerDiv: {
-    background: '#f8f9fa'
+    background: 'white'
   },
   buttonDiv: {
     justifyContent: 'center',
