@@ -9,41 +9,13 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+  
+  // String url = 'https://randomuser.me/api';
+  String url = 'https://localhost:5000/users';
 
-
-  // lines 15 - 39 are for keeping track of what the user types in
-  final TextEditingController _emailFilter = new TextEditingController();
-  final TextEditingController _passwordFilter = new TextEditingController();
-  String _email = "";
-  String _password = "";
-
-  _LoginState() {
-        _emailFilter.addListener(_emailListen);
-        _passwordFilter.addListener(_passwordListen);
-  }
-  void _emailListen() {
-    if (_emailFilter.text.isEmpty) {
-      _email = "";
-      } 
-      else {
-        _email = _emailFilter.text;
-        }
-  }
-  void _passwordListen() {
-    if (_passwordFilter.text.isEmpty) {
-      _password = "";
-    } 
-    else {
-      _password = _passwordFilter.text;
-    }
-  }
-
-  // lines 40 - 51 are examples of how to hit the api, need to figure out how to print the data to screen
-  String url = 'https://randomuser.me/api';
 
   Future<String> makeRequest() async {
-    var response = await http
-      .get(Uri.encodeFull(url), headers: {'Accept': 'applicaton/json'});
+    var response = await http.get(Uri.encodeFull(url), headers: {'Accept': 'applicaton/json'});
     print(response.body);
     List data;
     var extractData = json.decode(response.body);
