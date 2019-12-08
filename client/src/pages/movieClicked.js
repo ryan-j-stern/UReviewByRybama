@@ -21,7 +21,7 @@ class MovieClicked extends React.Component{
     // let resultList = null
     this.state = {
       jwt: props.location.state.jwt,
-      movieId: props.location.state.id,
+      movieId: props.location.state.movieId,
       title: props.location.state.title,
       redirect: false,
       resultBody: {},
@@ -30,6 +30,7 @@ class MovieClicked extends React.Component{
       text: ''
     }
     this.getMovie('/movie/clicked')
+    console.log(props)
   }
 
   getMovie = (path) => {

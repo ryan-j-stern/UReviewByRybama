@@ -97,7 +97,7 @@ class Profile extends Component{
     console.log("WishList", this.state.watchedList)
     if(this.state.watchedList){
       const poster = this.state.watchedList.map(t =>  {
-        console.log(t)
+        // console.log(t)
         return(
           <div class="card border-right-0 border-top-0 border-bottom-0 border-left-0">
               <div class="card-body">
@@ -105,7 +105,8 @@ class Profile extends Component{
                    pathname: '/movie/clicked',
                    state: {
                    jwt: this.state.jwt,
-                   id: t.id,
+                   movieId: t._id,
+                   title: t.title
                           }
                   }}style={{ color: '#FFF' }}>{t.title}</Link> <br></br>
 
