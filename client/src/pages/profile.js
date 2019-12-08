@@ -133,7 +133,8 @@ class Profile extends Component{
                    pathname: '/movie/clicked',
                    state: {
                    jwt: this.state.jwt,
-                   id: t.id,
+                   movieId: t._id,
+                   title: t.title
                           }
                 }}style={{ color: '#FFF' }}>{t.title}</Link>
               </div>
