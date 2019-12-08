@@ -36,6 +36,7 @@ class SearchResults extends React.Component{
                            state: {
                            jwt: this.state.jwt,
                            id: t.id,
+                           title: t.title
                           }
                       }} style={{ color: '#FFF' }}><h4 className="card-title">{t.title}</h4> </Link>
 
