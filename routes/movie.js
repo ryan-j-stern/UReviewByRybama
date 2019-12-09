@@ -88,7 +88,7 @@ router.post('/clicked', auth, (req, res) => {
   }
 })
 
-router.put('/add-to-wishlist', (req, res) => {
+router.put('/add-to-wishlist', auth, (req, res) => {
   try {
     let movieWish = {
       _id: req.headers.id,
@@ -113,7 +113,7 @@ router.put('/add-to-wishlist', (req, res) => {
   }
 })
 
-router.put('/add-to-watchlist', (req, res) => {
+router.put('/add-to-watchlist', auth, (req, res) => {
   try {
     let movieWish = {
       _id: req.headers.id,
