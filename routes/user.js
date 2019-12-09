@@ -90,7 +90,7 @@ router.post('/login', function(req, res) {
         }
       })
     })
-    .catch((err) => {
+    .catch(() => {
       res.status(404).json({
         message: 'Auth failed.'
       })
