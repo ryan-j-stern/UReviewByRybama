@@ -35,7 +35,7 @@ router.post('/signup', function(req, res) {
           wishList: new Array(),
           seen: new Array()
         })
-  
+
         User.create(user, (err, user) => {
           if(err) {
             res.status(500).json(err)
@@ -49,7 +49,7 @@ router.post('/signup', function(req, res) {
   } catch(err) {
     console.log('Sorry fam')
   }
- 
+
 })
 
 /* Finds user by username, compares password provided to the encrypted password stored in the database,
@@ -90,15 +90,15 @@ router.post('/login', function(req, res) {
         }
       })
     })
-    .catch(() => {
-      res.status(401).json({
+    .catch((err) => {
+      res.status(404).json({
         message: 'Auth failed.'
       })
     })
   } catch(err) {
     console.log('nah')
   }
-  
+
 })
 
 router.get('/profile', auth, (req, res) => {
