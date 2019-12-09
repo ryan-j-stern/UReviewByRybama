@@ -167,18 +167,18 @@ class Profile extends Component{
 
       <div class="container" style={styling.mainDiv}>
         <div class="row" style={styling.mainDiv} >
-          <div class="col-sm-4" style={styling.mainDiv}>
-          <img src={wishl} width = "300"/><br></br>
+          <div class="col-sm-3" style={styling.mainDiv}>
+          <img src={wishl} width = "270"/><br></br>
             <div>{(this.state.wishList.length == 0) ? (<p>No movies added to WishList yet.</p>) : this.renderCardsForWishList()}<br></br></div>
             <br></br>
           </div>
-          <div class="col-sm-4" style={styling.mainDiv}>
-          <img src={watchedl} width = "300"/><br></br>
+          <div class="col-sm-3" style={styling.mainDiv}>
+          <img src={watchedl} width = "270"/><br></br>
             <div>{(this.state.watchedList.length == 0) ? (<p>No movies added to WatchedList yet.</p>) : this.renderCardsForWatchedList()}</div>
             <br></br>
           </div>
-          <div class="col-sm-5" style={styling.mainDiv}>
-            <img src={urev} width = "300"/><br></br>
+          <div class="col-sm-4" style={styling.mainDiv}>
+            <img src={urev} width = "270"/><br></br>
             <div>{(this.state.reviews.length == 0) ? (<p>No reviews yet.</p>) : this.renderCardsForReviews()}</div>
           </div>
           </div>
