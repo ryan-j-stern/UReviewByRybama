@@ -141,6 +141,7 @@ renderRedirect = () => {
 
 addToWishList = (e) => {
   try{
+    console.log(this.state.title)
     fetch('https://rybama.herokuapp.com' + `/movie/add-to-wishlist` , {
     method: "PUT",
     headers: {
