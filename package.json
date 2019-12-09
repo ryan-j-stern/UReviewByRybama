@@ -8,7 +8,6 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js --no-deprecation",
     "build":  "node index.js --no-deprecation",
-    "watch": "nodemon index.js",
     "server": "node index.js"
   },
   "repository": {
