@@ -11,6 +11,7 @@ import Profile from './pages/profile'
 import SearchResults from './pages/SearchResults.js'
 import MovieClicked from './pages/movieClicked'
 
+console.log(process.env.REACT_APP_APIKEY);
 
 // Maps out every URL that has a component and links that URL with corresponding component
 function App() {
