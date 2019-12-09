@@ -31,7 +31,7 @@ class Profile extends Component{
     this.getUserProfile('/users/profile')
   }
   getUserProfile = (path) => {
-    fetch('http://localhost:3000' + path , {
+    fetch('https://rybama.herokuapp.com/' + path , {
       headers: {
         'Content-type': 'application/json',
         'Authorization': `Bearer ${this.state.jwt}`

@@ -49,7 +49,7 @@ class Search extends Component{
       }
     }
     getPopularMovies = (path) => {
-      fetch('http://localhost:3000' + path , {
+      fetch('https://rybama.herokuapp.com/' + path , {
         headers: {
           'Content-type': 'application/json',
           'Authorization': `Bearer ${this.state.jwt}`
@@ -195,7 +195,7 @@ class Search extends Component{
                 {this.renderCards()}
             </div>
         </div>
-            <img src={moviereel} width="400"/> <img src={moviereel} width="400"/>  <img src={moviereel} width="400"/>  
+            <img src={moviereel} width="400"/> <img src={moviereel} width="400"/>  <img src={moviereel} width="400"/>
           <br></br>
       </div>
       );

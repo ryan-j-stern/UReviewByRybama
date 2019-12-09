@@ -34,7 +34,7 @@ class MovieClicked extends React.Component{
   }
 
   getMovie = (path) => {
-    fetch('http://localhost:3000' + path , {
+    fetch('https://rybama.herokuapp.com/' + path , {
       headers: {
         'Content-type': 'application/json',
         'Authorization': `Bearer ${this.state.jwt}`,
@@ -103,7 +103,7 @@ renderRedirect = () => {
 
 onSubmit = (e) => {
   try{
-    fetch('http://localhost:3000' + '/movie/clicked' , {
+    fetch('https://rybama.herokuapp.com/' + '/movie/clicked' , {
     method: "POST",
     headers: {
       'Content-type': 'application/json',
@@ -141,7 +141,7 @@ renderRedirect = () => {
 
 addToWishList = (e) => {
   try{
-    fetch('http://localhost:3000' + `/movie/add-to-wishlist` , {
+    fetch('https://rybama.herokuapp.com/' + `/movie/add-to-wishlist` , {
     method: "PUT",
     headers: {
       'Content-type': 'application/json',
@@ -174,7 +174,7 @@ addToWishList = (e) => {
 addToWatchedList = (e) => {
   try{
     console.log(this.state.title)
-    fetch('http://localhost:3000' + `/movie/add-to-watchlist` , {
+    fetch('https://rybama.herokuapp.com/' + `/movie/add-to-watchlist` , {
     method: "PUT",
     headers: {
       'Content-type': 'application/json',
