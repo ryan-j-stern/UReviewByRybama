@@ -12,7 +12,7 @@ router.post('/search', auth, (req, res) => {
   try {
     console.log('QUERY '+req.body.query)
     request({
-      uri: `https://api.themoviedb.org/3/search/movie?api_key=${process.env.APIKEY}&language=en-US&query=${req.body.query}&page=1&include_adult=false`
+      uri: `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_APIKEY}&language=en-US&query=${req.body.query}&page=1&include_adult=false`
     }, (err, response, body) => {
       if(err) {
         console.log(err)
@@ -34,7 +34,7 @@ router.get('/clicked', auth, (req, res) => {
   request({
     uri: `https://api.themoviedb.org/3/movie/${req.headers.id}?language=en-US&api_key=`,
     qs: {
-      api_key: process.env.APIKEY
+      api_key: process.env.REACT_APP_APIKEY
     }
   }, (err, response, body) => {
     if(err) {
@@ -88,7 +88,7 @@ router.post('/clicked', auth, (req, res) => {
   }
 })
 
-router.put('/add-to-wishlist', auth, (req, res) => {
+router.put('/add-to-wishlist', (req, res) => {
   try {
     let movieWish = {
       _id: req.headers.id,
@@ -113,7 +113,7 @@ router.put('/add-to-wishlist', auth, (req, res) => {
   }
 })
 
-router.put('/add-to-watchlist', auth, (req, res) => {
+router.put('/add-to-watchlist', (req, res) => {
   try {
     let movieWish = {
       _id: req.headers.id,
