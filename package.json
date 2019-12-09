@@ -4,6 +4,7 @@
   "description": "UReview",
   "main": "index.js",
   "scripts": {
+    "heroku-prebuild": "export APIKEY="51bd07d9af5ccd56ae2acbc0606343bc"",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js --no-deprecation",
     "build":  "node index.js --no-deprecation",
