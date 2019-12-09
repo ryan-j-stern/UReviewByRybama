@@ -51,7 +51,7 @@ class SignUp extends Component {
 // user clicks submit button
   onSubmit = (e) => {
     try{
-      fetch('https://rybama.herokuapp.com/' + '/users/signup' , {
+      fetch('https://rybama.herokuapp.com' + '/users/signup' , {
       method: "POST",
       headers: {
         'Content-type': 'application/json',
