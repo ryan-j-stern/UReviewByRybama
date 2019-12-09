@@ -49,7 +49,7 @@ class Search extends Component{
       }
     }
     getPopularMovies = (path) => {
-      fetch('https://rybama.herokuapp.com/' + path , {
+      fetch('https://rybama.herokuapp.com' + path , {
         headers: {
           'Content-type': 'application/json',
           'Authorization': `Bearer ${this.state.jwt}`
@@ -86,7 +86,7 @@ class Search extends Component{
     }
 
      postAndFetchData = (path) => {
-      fetch('http://localhost:3000' + path , {
+      fetch('https://rybama.herokuapp.com' + path , {
         method: "POST",
         headers: {
           'Content-type': 'application/json',
