@@ -21,6 +21,12 @@ try{
   console.log(error)
 }
 
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+  });
+
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 // Allows front-end and api to talk to eachother
@@ -37,7 +43,6 @@ app.use('/movie', movieRouter)
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname+'/client/build/index.html'));
 });
-
 
 app.listen(PORT, () => {
   console.log(`Listening on port ${PORT}`)
