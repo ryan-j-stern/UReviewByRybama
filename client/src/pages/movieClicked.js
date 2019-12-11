@@ -117,7 +117,7 @@ onSubmit = (e) => {
       console.log(response.status)
       if((response.status == 200 || response.status == 201) && this.mounted == true) {
         this.setState({
-          redirect: true
+          redirect: false
         })
         return response.text()
       } else if ((response.status == 401 || response.status == 400 || response.status == 500 ) && this.mounted == true) {
