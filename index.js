@@ -10,13 +10,6 @@ const userRouter = require('./routes/user')
 const homeRouter = require('./routes/home')
 const movieRouter = require('./routes/movie')
 
-var allowCrossDomain = function(req, res, next) {
-    res.header('Access-Control-Allow-Origin', "*");
-    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-    res.header('Access-Control-Allow-Headers', 'Content-Type');
-    next();
-}
-
 // Connecting to mongo database
 try{
     mongoose.connect('mongodb+srv://movietime:movietimedbpw@ureview-fseje.mongodb.net/test?retryWrites=true&w=majority',{
@@ -45,9 +38,6 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname+'/client/build/index.html'));
 });
 
-app.configure(function() {
-    app.use(allowCrossDomain);
-});   
 
 app.listen(PORT, () => {
   console.log(`Listening on port ${PORT}`)
