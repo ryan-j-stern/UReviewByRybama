@@ -14,6 +14,7 @@ const movieRouter = require('./routes/movie')
 try{
     mongoose.connect('mongodb+srv://movietime:movietimedbpw@ureview-fseje.mongodb.net/test?retryWrites=true&w=majority',{
     useNewUrlParser: true,
+    useUnifiedTopology: true,
     useFindAndModify: false
   })
 } catch(error) {
