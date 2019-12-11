@@ -38,6 +38,12 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname+'/client/build/index.html'));
 });
 
+app.use( (request, response, next) => {
+    response.header("Access-Control-Allow-Origin", "*");
+    response.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+});
+
 app.listen(PORT, () => {
   console.log(`Listening on port ${PORT}`)
 })
